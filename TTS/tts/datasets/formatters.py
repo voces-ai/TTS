@@ -107,6 +107,36 @@ def ljspeech(root_path, meta_file):
     return items
 
 
+# Added by LBC
+def monoceros_format(root_path, meta_file):
+    """Normalizes the Monoceros meta data file to TTS format"""
+    txt_file = os.path.join(root_path, meta_file)
+    items = []
+    with open(txt_file, "r", encoding="utf-8") as ttf:
+        for line in ttf:
+            cols = line.split("|")
+            wav_file = os.path.join(root_path, cols[0])
+            text = cols[2]
+            speaker_name = cols[3]
+            items.append([text, wav_file, speaker_name])
+    return items
+
+
+# Added by LBC
+def monoceros_format_multispeaker_joint(root_path, meta_file):
+    """Normalizes the Monoceros meta data file to TTS format"""
+    txt_file = os.path.join(root_path, meta_file)
+    items = []
+    with open(txt_file, "r", encoding="utf-8") as ttf:
+        for line in ttf:
+            cols = line.split("|")
+            wav_file = cols[0]
+            text = cols[2]
+            speaker_name = cols[3]
+            items.append([text, wav_file, speaker_name])
+    return items
+
+
 def ljspeech_test(root_path, meta_file):
     """Normalizes the LJSpeech meta data file for TTS testing
     https://keithito.com/LJ-Speech-Dataset/"""

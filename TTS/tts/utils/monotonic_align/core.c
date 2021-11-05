@@ -4,12 +4,12 @@
 {
     "distutils": {
         "depends": [],
-        "name": "TTS.tts.layers.glow_tts.monotonic_align.core",
+        "name": "TTS.tts.utils.monotonic_align.core",
         "sources": [
-            "TTS/tts/layers/glow_tts/monotonic_align/core.pyx"
+            "TTS/tts/utils/monotonic_align/core.pyx"
         ]
     },
-    "module_name": "TTS.tts.layers.glow_tts.monotonic_align.core"
+    "module_name": "TTS.tts.utils.monotonic_align.core"
 }
 END: Cython Metadata */
 
@@ -625,8 +625,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__TTS__tts__layers__glow_tts__monotonic_align__core
-#define __PYX_HAVE_API__TTS__tts__layers__glow_tts__monotonic_align__core
+#define __PYX_HAVE__TTS__tts__utils__monotonic_align__core
+#define __PYX_HAVE_API__TTS__tts__utils__monotonic_align__core
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -868,7 +868,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "TTS/tts/layers/glow_tts/monotonic_align/core.pyx",
+  "TTS/tts/utils/monotonic_align/core.pyx",
   "__init__.pxd",
   "stringsource",
   "type.pxd",
@@ -982,7 +982,7 @@ typedef struct {
 } __Pyx_BufFmt_Context;
 
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":689
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":689
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -991,7 +991,7 @@ typedef struct {
  */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":690
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":690
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -1000,7 +1000,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
  */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":691
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":691
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -1009,7 +1009,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
  */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":692
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":692
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -1018,7 +1018,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
  */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":696
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":696
  * #ctypedef npy_int128     int128_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -1027,7 +1027,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
  */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":697
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":697
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -1036,7 +1036,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
  */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":698
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":698
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -1045,7 +1045,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
  */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":699
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":699
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -1054,7 +1054,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
  */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":703
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":703
  * #ctypedef npy_uint128    uint128_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -1063,7 +1063,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
  */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":704
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":704
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -1072,7 +1072,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
  */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":713
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":713
  * # The int types are mapped a bit surprising --
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t             # <<<<<<<<<<<<<<
@@ -1081,7 +1081,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
  */
 typedef npy_long __pyx_t_5numpy_int_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":714
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":714
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t             # <<<<<<<<<<<<<<
@@ -1090,7 +1090,7 @@ typedef npy_long __pyx_t_5numpy_int_t;
  */
 typedef npy_longlong __pyx_t_5numpy_long_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":715
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":715
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -1099,7 +1099,7 @@ typedef npy_longlong __pyx_t_5numpy_long_t;
  */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":717
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":717
  * ctypedef npy_longlong   longlong_t
  * 
  * ctypedef npy_ulong      uint_t             # <<<<<<<<<<<<<<
@@ -1108,7 +1108,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
  */
 typedef npy_ulong __pyx_t_5numpy_uint_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":718
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":718
  * 
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t             # <<<<<<<<<<<<<<
@@ -1117,7 +1117,7 @@ typedef npy_ulong __pyx_t_5numpy_uint_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":719
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":719
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1126,7 +1126,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":721
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":721
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1135,7 +1135,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
  */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":722
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":722
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1144,7 +1144,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
  */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":724
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":724
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1153,7 +1153,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
  */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":725
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":725
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1162,7 +1162,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
  */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":726
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":726
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1201,7 +1201,7 @@ struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":728
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":728
  * ctypedef npy_longdouble longdouble_t
  * 
  * ctypedef npy_cfloat      cfloat_t             # <<<<<<<<<<<<<<
@@ -1210,7 +1210,7 @@ struct __pyx_memoryviewslice_obj;
  */
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":729
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":729
  * 
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t             # <<<<<<<<<<<<<<
@@ -1219,7 +1219,7 @@ typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":730
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":730
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t
  * ctypedef npy_clongdouble clongdouble_t             # <<<<<<<<<<<<<<
@@ -1228,7 +1228,7 @@ typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
  */
 typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":732
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":732
  * ctypedef npy_clongdouble clongdouble_t
  * 
  * ctypedef npy_cdouble     complex_t             # <<<<<<<<<<<<<<
@@ -1236,16 +1236,16 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  * cdef inline object PyArray_MultiIterNew1(a):
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
-struct __pyx_opt_args_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c;
+struct __pyx_opt_args_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c;
 
-/* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":42
+/* "TTS/tts/utils/monotonic_align/core.pyx":42
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef void maximum_path_c(int[:,:,::1] paths, float[:,:,::1] values, int[::1] t_xs, int[::1] t_ys, float max_neg_val=-1e9) nogil:             # <<<<<<<<<<<<<<
  *   cdef int b = values.shape[0]
  * 
  */
-struct __pyx_opt_args_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c {
+struct __pyx_opt_args_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c {
   int __pyx_n;
   float max_neg_val;
 };
@@ -2143,7 +2143,7 @@ static PyTypeObject *__pyx_ptype_5numpy_broadcast = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
 static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 
-/* Module declarations from 'TTS.tts.layers.glow_tts.monotonic_align.core' */
+/* Module declarations from 'TTS.tts.utils.monotonic_align.core' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -2155,8 +2155,8 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_each(__Pyx_memviewslice, __Pyx_memviewslice, int, int, float); /*proto*/
-static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int __pyx_skip_dispatch, struct __pyx_opt_args_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c *__pyx_optional_args); /*proto*/
+static void __pyx_f_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_each(__Pyx_memviewslice, __Pyx_memviewslice, int, int, float); /*proto*/
+static void __pyx_f_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int __pyx_skip_dispatch, struct __pyx_opt_args_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c *__pyx_optional_args); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -2192,11 +2192,11 @@ static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_int = { "int", NULL, sizeof(int), { 0 }, 0, IS_UNSIGNED(int) ? 'U' : 'I', IS_UNSIGNED(int), 0 };
 static __Pyx_TypeInfo __Pyx_TypeInfo_float = { "float", NULL, sizeof(float), { 0 }, 0, 'R', 0, 0 };
-#define __Pyx_MODULE_NAME "TTS.tts.layers.glow_tts.monotonic_align.core"
-extern int __pyx_module_is_main_TTS__tts__layers__glow_tts__monotonic_align__core;
-int __pyx_module_is_main_TTS__tts__layers__glow_tts__monotonic_align__core = 0;
+#define __Pyx_MODULE_NAME "TTS.tts.utils.monotonic_align.core"
+extern int __pyx_module_is_main_TTS__tts__utils__monotonic_align__core;
+int __pyx_module_is_main_TTS__tts__utils__monotonic_align__core = 0;
 
-/* Implementation of 'TTS.tts.layers.glow_tts.monotonic_align.core' */
+/* Implementation of 'TTS.tts.utils.monotonic_align.core' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ImportError;
 static PyObject *__pyx_builtin_ValueError;
@@ -2396,7 +2396,7 @@ static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
 static PyObject *__pyx_n_s_values;
-static PyObject *__pyx_pf_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_paths, __Pyx_memviewslice __pyx_v_values, __Pyx_memviewslice __pyx_v_t_xs, __Pyx_memviewslice __pyx_v_t_ys, float __pyx_v_max_neg_val); /* proto */
+static PyObject *__pyx_pf_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_paths, __Pyx_memviewslice __pyx_v_values, __Pyx_memviewslice __pyx_v_t_xs, __Pyx_memviewslice __pyx_v_t_ys, float __pyx_v_max_neg_val); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2477,7 +2477,7 @@ static PyObject *__pyx_tuple__27;
 static PyObject *__pyx_codeobj__28;
 /* Late includes */
 
-/* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":11
+/* "TTS/tts/utils/monotonic_align/core.pyx":11
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef void maximum_path_each(int[:,::1] path, float[:,::1] value, int t_x, int t_y, float max_neg_val) nogil:             # <<<<<<<<<<<<<<
@@ -2485,7 +2485,7 @@ static PyObject *__pyx_codeobj__28;
  *   cdef int y
  */
 
-static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_each(__Pyx_memviewslice __pyx_v_path, __Pyx_memviewslice __pyx_v_value, int __pyx_v_t_x, int __pyx_v_t_y, float __pyx_v_max_neg_val) {
+static void __pyx_f_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_each(__Pyx_memviewslice __pyx_v_path, __Pyx_memviewslice __pyx_v_value, int __pyx_v_t_x, int __pyx_v_t_y, float __pyx_v_max_neg_val) {
   int __pyx_v_x;
   int __pyx_v_y;
   float __pyx_v_v_prev;
@@ -2508,7 +2508,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
   Py_ssize_t __pyx_t_15;
   int __pyx_t_16;
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":17
+  /* "TTS/tts/utils/monotonic_align/core.pyx":17
  *   cdef float v_cur
  *   cdef float tmp
  *   cdef int index = t_x - 1             # <<<<<<<<<<<<<<
@@ -2517,7 +2517,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
  */
   __pyx_v_index = (__pyx_v_t_x - 1);
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":19
+  /* "TTS/tts/utils/monotonic_align/core.pyx":19
  *   cdef int index = t_x - 1
  * 
  *   for y in range(t_y):             # <<<<<<<<<<<<<<
@@ -2529,7 +2529,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_y = __pyx_t_3;
 
-    /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":20
+    /* "TTS/tts/utils/monotonic_align/core.pyx":20
  * 
  *   for y in range(t_y):
  *     for x in range(max(0, t_x + y - t_y), min(t_x, y + 1)):             # <<<<<<<<<<<<<<
@@ -2555,7 +2555,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
     for (__pyx_t_5 = __pyx_t_7; __pyx_t_5 < __pyx_t_6; __pyx_t_5+=1) {
       __pyx_v_x = __pyx_t_5;
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":21
+      /* "TTS/tts/utils/monotonic_align/core.pyx":21
  *   for y in range(t_y):
  *     for x in range(max(0, t_x + y - t_y), min(t_x, y + 1)):
  *       if x == y:             # <<<<<<<<<<<<<<
@@ -2565,7 +2565,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
       __pyx_t_8 = ((__pyx_v_x == __pyx_v_y) != 0);
       if (__pyx_t_8) {
 
-        /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":22
+        /* "TTS/tts/utils/monotonic_align/core.pyx":22
  *     for x in range(max(0, t_x + y - t_y), min(t_x, y + 1)):
  *       if x == y:
  *         v_cur = max_neg_val             # <<<<<<<<<<<<<<
@@ -2574,7 +2574,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
  */
         __pyx_v_v_cur = __pyx_v_max_neg_val;
 
-        /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":21
+        /* "TTS/tts/utils/monotonic_align/core.pyx":21
  *   for y in range(t_y):
  *     for x in range(max(0, t_x + y - t_y), min(t_x, y + 1)):
  *       if x == y:             # <<<<<<<<<<<<<<
@@ -2584,7 +2584,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
         goto __pyx_L7;
       }
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":24
+      /* "TTS/tts/utils/monotonic_align/core.pyx":24
  *         v_cur = max_neg_val
  *       else:
  *         v_cur = value[x, y-1]             # <<<<<<<<<<<<<<
@@ -2598,7 +2598,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
       }
       __pyx_L7:;
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":25
+      /* "TTS/tts/utils/monotonic_align/core.pyx":25
  *       else:
  *         v_cur = value[x, y-1]
  *       if x == 0:             # <<<<<<<<<<<<<<
@@ -2608,7 +2608,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
       __pyx_t_8 = ((__pyx_v_x == 0) != 0);
       if (__pyx_t_8) {
 
-        /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":26
+        /* "TTS/tts/utils/monotonic_align/core.pyx":26
  *         v_cur = value[x, y-1]
  *       if x == 0:
  *         if y == 0:             # <<<<<<<<<<<<<<
@@ -2618,7 +2618,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
         __pyx_t_8 = ((__pyx_v_y == 0) != 0);
         if (__pyx_t_8) {
 
-          /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":27
+          /* "TTS/tts/utils/monotonic_align/core.pyx":27
  *       if x == 0:
  *         if y == 0:
  *           v_prev = 0.             # <<<<<<<<<<<<<<
@@ -2627,7 +2627,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
  */
           __pyx_v_v_prev = 0.;
 
-          /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":26
+          /* "TTS/tts/utils/monotonic_align/core.pyx":26
  *         v_cur = value[x, y-1]
  *       if x == 0:
  *         if y == 0:             # <<<<<<<<<<<<<<
@@ -2637,7 +2637,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
           goto __pyx_L9;
         }
 
-        /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":29
+        /* "TTS/tts/utils/monotonic_align/core.pyx":29
  *           v_prev = 0.
  *         else:
  *           v_prev = max_neg_val             # <<<<<<<<<<<<<<
@@ -2649,7 +2649,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
         }
         __pyx_L9:;
 
-        /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":25
+        /* "TTS/tts/utils/monotonic_align/core.pyx":25
  *       else:
  *         v_cur = value[x, y-1]
  *       if x == 0:             # <<<<<<<<<<<<<<
@@ -2659,7 +2659,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
         goto __pyx_L8;
       }
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":31
+      /* "TTS/tts/utils/monotonic_align/core.pyx":31
  *           v_prev = max_neg_val
  *       else:
  *         v_prev = value[x-1, y-1]             # <<<<<<<<<<<<<<
@@ -2673,7 +2673,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
       }
       __pyx_L8:;
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":32
+      /* "TTS/tts/utils/monotonic_align/core.pyx":32
  *       else:
  *         v_prev = value[x-1, y-1]
  *       value[x, y] = max(v_cur, v_prev) + value[x, y]             # <<<<<<<<<<<<<<
@@ -2695,7 +2695,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
     }
   }
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":34
+  /* "TTS/tts/utils/monotonic_align/core.pyx":34
  *       value[x, y] = max(v_cur, v_prev) + value[x, y]
  * 
  *   for y in range(t_y - 1, -1, -1):             # <<<<<<<<<<<<<<
@@ -2705,7 +2705,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
   for (__pyx_t_1 = (__pyx_v_t_y - 1); __pyx_t_1 > -1; __pyx_t_1-=1) {
     __pyx_v_y = __pyx_t_1;
 
-    /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":35
+    /* "TTS/tts/utils/monotonic_align/core.pyx":35
  * 
  *   for y in range(t_y - 1, -1, -1):
  *     path[index, y] = 1             # <<<<<<<<<<<<<<
@@ -2716,7 +2716,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
     __pyx_t_9 = __pyx_v_y;
     *((int *) ( /* dim=1 */ ((char *) (((int *) ( /* dim=0 */ (__pyx_v_path.data + __pyx_t_10 * __pyx_v_path.strides[0]) )) + __pyx_t_9)) )) = 1;
 
-    /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":36
+    /* "TTS/tts/utils/monotonic_align/core.pyx":36
  *   for y in range(t_y - 1, -1, -1):
  *     path[index, y] = 1
  *     if index != 0 and (index == y or value[index, y-1] < value[index-1, y-1]):             # <<<<<<<<<<<<<<
@@ -2744,7 +2744,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
     __pyx_L13_bool_binop_done:;
     if (__pyx_t_8) {
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":37
+      /* "TTS/tts/utils/monotonic_align/core.pyx":37
  *     path[index, y] = 1
  *     if index != 0 and (index == y or value[index, y-1] < value[index-1, y-1]):
  *       index = index - 1             # <<<<<<<<<<<<<<
@@ -2753,7 +2753,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
  */
       __pyx_v_index = (__pyx_v_index - 1);
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":36
+      /* "TTS/tts/utils/monotonic_align/core.pyx":36
  *   for y in range(t_y - 1, -1, -1):
  *     path[index, y] = 1
  *     if index != 0 and (index == y or value[index, y-1] < value[index-1, y-1]):             # <<<<<<<<<<<<<<
@@ -2763,7 +2763,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
     }
   }
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":11
+  /* "TTS/tts/utils/monotonic_align/core.pyx":11
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef void maximum_path_each(int[:,::1] path, float[:,::1] value, int t_x, int t_y, float max_neg_val) nogil:             # <<<<<<<<<<<<<<
@@ -2774,7 +2774,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
   /* function exit code */
 }
 
-/* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":42
+/* "TTS/tts/utils/monotonic_align/core.pyx":42
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef void maximum_path_c(int[:,:,::1] paths, float[:,:,::1] values, int[::1] t_xs, int[::1] t_ys, float max_neg_val=-1e9) nogil:             # <<<<<<<<<<<<<<
@@ -2782,8 +2782,8 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
  * 
  */
 
-static PyObject *__pyx_pw_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_1maximum_path_c(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c(__Pyx_memviewslice __pyx_v_paths, __Pyx_memviewslice __pyx_v_values, __Pyx_memviewslice __pyx_v_t_xs, __Pyx_memviewslice __pyx_v_t_ys, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c *__pyx_optional_args) {
+static PyObject *__pyx_pw_3TTS_3tts_5utils_15monotonic_align_4core_1maximum_path_c(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static void __pyx_f_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c(__Pyx_memviewslice __pyx_v_paths, __Pyx_memviewslice __pyx_v_values, __Pyx_memviewslice __pyx_v_t_xs, __Pyx_memviewslice __pyx_v_t_ys, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c *__pyx_optional_args) {
   float __pyx_v_max_neg_val = __pyx_k_;
   CYTHON_UNUSED int __pyx_v_b;
   int __pyx_v_i;
@@ -2800,7 +2800,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
     }
   }
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":43
+  /* "TTS/tts/utils/monotonic_align/core.pyx":43
  * @cython.wraparound(False)
  * cpdef void maximum_path_c(int[:,:,::1] paths, float[:,:,::1] values, int[::1] t_xs, int[::1] t_ys, float max_neg_val=-1e9) nogil:
  *   cdef int b = values.shape[0]             # <<<<<<<<<<<<<<
@@ -2809,7 +2809,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
  */
   __pyx_v_b = (__pyx_v_values.shape[0]);
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":46
+  /* "TTS/tts/utils/monotonic_align/core.pyx":46
  * 
  *   cdef int i
  *   for i in prange(b, nogil=True):             # <<<<<<<<<<<<<<
@@ -2845,7 +2845,7 @@ static void __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_
                         {
                             __pyx_v_i = (int)(0 + 1 * __pyx_t_2);
 
-                            /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":47
+                            /* "TTS/tts/utils/monotonic_align/core.pyx":47
  *   cdef int i
  *   for i in prange(b, nogil=True):
  *     maximum_path_each(paths[i], values[i], t_xs[i], t_ys[i], max_neg_val)             # <<<<<<<<<<<<<<
@@ -2886,7 +2886,7 @@ __pyx_t_5.strides[1] = __pyx_v_values.strides[2];
 
 __pyx_t_6 = __pyx_v_i;
                             __pyx_t_7 = __pyx_v_i;
-                            __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_each(__pyx_t_4, __pyx_t_5, (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_t_xs.data) + __pyx_t_6)) ))), (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_t_ys.data) + __pyx_t_7)) ))), __pyx_v_max_neg_val);
+                            __pyx_f_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_each(__pyx_t_4, __pyx_t_5, (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_t_xs.data) + __pyx_t_6)) ))), (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_t_ys.data) + __pyx_t_7)) ))), __pyx_v_max_neg_val);
                             __PYX_XDEC_MEMVIEW(&__pyx_t_4, 0);
                             __pyx_t_4.memview = NULL;
                             __pyx_t_4.data = NULL;
@@ -2906,7 +2906,7 @@ __pyx_t_6 = __pyx_v_i;
         #endif
       }
 
-      /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":46
+      /* "TTS/tts/utils/monotonic_align/core.pyx":46
  * 
  *   cdef int i
  *   for i in prange(b, nogil=True):             # <<<<<<<<<<<<<<
@@ -2924,7 +2924,7 @@ __pyx_t_6 = __pyx_v_i;
       }
   }
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":42
+  /* "TTS/tts/utils/monotonic_align/core.pyx":42
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef void maximum_path_c(int[:,:,::1] paths, float[:,:,::1] values, int[::1] t_xs, int[::1] t_ys, float max_neg_val=-1e9) nogil:             # <<<<<<<<<<<<<<
@@ -2936,8 +2936,8 @@ __pyx_t_6 = __pyx_v_i;
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_1maximum_path_c(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_1maximum_path_c(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_3TTS_3tts_5utils_15monotonic_align_4core_1maximum_path_c(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_3TTS_3tts_5utils_15monotonic_align_4core_1maximum_path_c(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_paths = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_values = { 0, 0, { 0 }, { 0 }, { 0 } };
   __Pyx_memviewslice __pyx_v_t_xs = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -3028,21 +3028,21 @@ static PyObject *__pyx_pw_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_1m
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("maximum_path_c", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 42, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("TTS.tts.layers.glow_tts.monotonic_align.core.maximum_path_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("TTS.tts.utils.monotonic_align.core.maximum_path_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c(__pyx_self, __pyx_v_paths, __pyx_v_values, __pyx_v_t_xs, __pyx_v_t_ys, __pyx_v_max_neg_val);
+  __pyx_r = __pyx_pf_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c(__pyx_self, __pyx_v_paths, __pyx_v_values, __pyx_v_t_xs, __pyx_v_t_ys, __pyx_v_max_neg_val);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_paths, __Pyx_memviewslice __pyx_v_values, __Pyx_memviewslice __pyx_v_t_xs, __Pyx_memviewslice __pyx_v_t_ys, float __pyx_v_max_neg_val) {
+static PyObject *__pyx_pf_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_paths, __Pyx_memviewslice __pyx_v_values, __Pyx_memviewslice __pyx_v_t_xs, __Pyx_memviewslice __pyx_v_t_ys, float __pyx_v_max_neg_val) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  struct __pyx_opt_args_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c __pyx_t_1;
+  struct __pyx_opt_args_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
@@ -3055,7 +3055,7 @@ static PyObject *__pyx_pf_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_ma
   if (unlikely(!__pyx_v_t_ys.memview)) { __Pyx_RaiseUnboundLocalError("t_ys"); __PYX_ERR(0, 42, __pyx_L1_error) }
   __pyx_t_1.__pyx_n = 1;
   __pyx_t_1.max_neg_val = __pyx_v_max_neg_val;
-  __pyx_f_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_maximum_path_c(__pyx_v_paths, __pyx_v_values, __pyx_v_t_xs, __pyx_v_t_ys, 0, &__pyx_t_1); 
+  __pyx_f_3TTS_3tts_5utils_15monotonic_align_4core_maximum_path_c(__pyx_v_paths, __pyx_v_values, __pyx_v_t_xs, __pyx_v_t_ys, 0, &__pyx_t_1); 
   __pyx_t_2 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
@@ -3065,7 +3065,7 @@ static PyObject *__pyx_pf_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_ma
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("TTS.tts.layers.glow_tts.monotonic_align.core.maximum_path_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("TTS.tts.utils.monotonic_align.core.maximum_path_c", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_paths, 1);
@@ -3077,7 +3077,7 @@ static PyObject *__pyx_pf_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_ma
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":734
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":734
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -3094,7 +3094,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":735
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":735
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -3108,7 +3108,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":734
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":734
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -3127,7 +3127,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":737
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":737
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -3144,7 +3144,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":738
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":738
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -3158,7 +3158,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":737
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":737
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -3177,7 +3177,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":740
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":740
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -3194,7 +3194,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":741
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":741
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -3208,7 +3208,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":740
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":740
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -3227,7 +3227,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":743
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":743
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -3244,7 +3244,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":744
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":744
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -3258,7 +3258,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":743
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":743
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -3277,7 +3277,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":746
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":746
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -3294,7 +3294,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":747
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":747
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -3308,7 +3308,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":746
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":746
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -3327,7 +3327,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":749
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":749
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -3341,7 +3341,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":750
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":750
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -3351,7 +3351,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = (PyDataType_HASSUBARRAY(__pyx_v_d) != 0);
   if (__pyx_t_1) {
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":751
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":751
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -3363,7 +3363,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_v_d->subarray->shape);
     goto __pyx_L0;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":750
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":750
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -3372,7 +3372,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  */
   }
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":753
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":753
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -3386,7 +3386,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":749
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":749
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -3401,7 +3401,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":868
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":868
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -3413,7 +3413,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":869
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":869
  * 
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -3422,7 +3422,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":870
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":870
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -3431,7 +3431,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":868
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":868
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -3443,7 +3443,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":872
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":872
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -3458,7 +3458,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":873
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":873
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -3467,7 +3467,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":874
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":874
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -3477,7 +3477,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = ((__pyx_v_base == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":875
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":875
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -3488,7 +3488,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":874
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":874
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -3497,7 +3497,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":876
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":876
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -3509,7 +3509,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":872
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":872
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -3524,7 +3524,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":880
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":880
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -3548,7 +3548,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":881
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":881
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3564,7 +3564,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":882
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":882
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
@@ -3573,7 +3573,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 882, __pyx_L3_error)
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":881
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":881
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3587,7 +3587,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":883
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":883
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3602,7 +3602,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":884
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":884
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -3618,7 +3618,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":881
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":881
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3633,7 +3633,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":880
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":880
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -3656,7 +3656,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":886
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":886
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -3680,7 +3680,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":887
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":887
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3696,7 +3696,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":888
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":888
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -3705,7 +3705,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 888, __pyx_L3_error)
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":887
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":887
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3719,7 +3719,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":889
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":889
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3734,7 +3734,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":890
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":890
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -3750,7 +3750,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":887
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":887
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3765,7 +3765,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":886
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":886
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -3788,7 +3788,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":892
+/* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":892
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -3812,7 +3812,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":893
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":893
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3828,7 +3828,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":894
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":894
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -3837,7 +3837,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 894, __pyx_L3_error)
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":893
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":893
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3851,7 +3851,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":895
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":895
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -3866,7 +3866,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":896
+      /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":896
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -3882,7 +3882,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":893
+    /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":893
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -3897,7 +3897,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":892
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":892
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -17060,7 +17060,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "TTS.tts.layers.glow_tts.monotonic_align.core.array", /*tp_name*/
+  "TTS.tts.utils.monotonic_align.core.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -17179,7 +17179,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "TTS.tts.layers.glow_tts.monotonic_align.core.Enum", /*tp_name*/
+  "TTS.tts.utils.monotonic_align.core.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -17440,7 +17440,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "TTS.tts.layers.glow_tts.monotonic_align.core.memoryview", /*tp_name*/
+  "TTS.tts.utils.monotonic_align.core.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -17578,7 +17578,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "TTS.tts.layers.glow_tts.monotonic_align.core._memoryviewslice", /*tp_name*/
+  "TTS.tts.utils.monotonic_align.core._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -17654,7 +17654,7 @@ static PyTypeObject __pyx_type___pyx_memoryviewslice = {
 };
 
 static PyMethodDef __pyx_methods[] = {
-  {"maximum_path_c", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3TTS_3tts_6layers_8glow_tts_15monotonic_align_4core_1maximum_path_c, METH_VARARGS|METH_KEYWORDS, 0},
+  {"maximum_path_c", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_3TTS_3tts_5utils_15monotonic_align_4core_1maximum_path_c, METH_VARARGS|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -17817,7 +17817,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":884
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":884
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -17828,7 +17828,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "../miniconda3/envs/p3.6/lib/python3.6/site-packages/numpy/__init__.pxd":890
+  /* "../../../../tmp/pip-build-env-68biyapu/overlay/lib/python3.8/site-packages/numpy/__init__.pxd":890
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -18451,14 +18451,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_TTS__tts__layers__glow_tts__monotonic_align__core) {
+  if (__pyx_module_is_main_TTS__tts__utils__monotonic_align__core) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "TTS.tts.layers.glow_tts.monotonic_align.core")) {
-      if (unlikely(PyDict_SetItemString(modules, "TTS.tts.layers.glow_tts.monotonic_align.core", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "TTS.tts.utils.monotonic_align.core")) {
+      if (unlikely(PyDict_SetItemString(modules, "TTS.tts.utils.monotonic_align.core", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -18479,7 +18479,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":1
+  /* "TTS/tts/utils/monotonic_align/core.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * 
  * cimport cython
@@ -18489,7 +18489,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":42
+  /* "TTS/tts/utils/monotonic_align/core.pyx":42
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cpdef void maximum_path_c(int[:,:,::1] paths, float[:,:,::1] values, int[::1] t_xs, int[::1] t_ys, float max_neg_val=-1e9) nogil:             # <<<<<<<<<<<<<<
@@ -18499,7 +18499,7 @@ if (!__Pyx_RefNanny) {
   __pyx_k_ = (-1e9);
   __pyx_k_ = (-1e9);
 
-  /* "TTS/tts/layers/glow_tts/monotonic_align/core.pyx":1
+  /* "TTS/tts/utils/monotonic_align/core.pyx":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * 
  * cimport cython
@@ -18669,11 +18669,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init TTS.tts.layers.glow_tts.monotonic_align.core", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init TTS.tts.utils.monotonic_align.core", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init TTS.tts.layers.glow_tts.monotonic_align.core");
+    PyErr_SetString(PyExc_ImportError, "init TTS.tts.utils.monotonic_align.core");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

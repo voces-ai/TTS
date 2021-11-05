@@ -53,6 +53,11 @@ def replace_symbols(text, lang="en"):
         text = text.replace("&", " et ")
     elif lang == "pt":
         text = text.replace("&", " e ")
+    # added by LBC
+    elif lang == "es": 
+        text = text.replace("&", " y ")
+        text = text.replace("%", " por ciento ")
+        text = text.replace("€", " euros ")
     return text
 
 
@@ -115,6 +120,17 @@ def portuguese_cleaners(text):
     numbers, phonemizer already does that"""
     text = lowercase(text)
     text = replace_symbols(text, lang="pt")
+    text = remove_aux_symbols(text)
+    text = collapse_whitespace(text)
+    return text
+
+
+# Added by LBC
+def spanish_cleaners(text):
+    """Basic pipeline for Spanish text. There is no need to expand abbreviation and
+    numbers, phonemizer already does that"""
+    text = lowercase(text)
+    text = replace_symbols(text, lang="es")
     text = remove_aux_symbols(text)
     text = collapse_whitespace(text)
     return text

@@ -167,6 +167,21 @@ class TTSDataset(Dataset):
         )
         phonemes = np.asarray(phonemes, dtype=np.int32)
         np.save(cache_path, phonemes)
+        # Added by LBC
+        #import pickle
+        #dict = {'text' : text, 
+        #        'cleaners' : cleaners, 
+        #        'language' : language,
+        #        'enable_eos_bos' : False,
+        #        'custom_symbols' : custom_symbols,
+        #        'tp' : characters,
+        #        'add_blank' : add_blank,
+        #        'phonemes' : phonemes,
+        #        }
+        #f = open(cache_path+".pkl","wb")
+        #pickle.dump(dict,f)
+        #f.close()
+        ####
         return phonemes
 
     @staticmethod

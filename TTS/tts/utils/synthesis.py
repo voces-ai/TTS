@@ -32,6 +32,25 @@ def text_to_seq(text, CONFIG, custom_symbols=None):
             ),
             dtype=np.int32,
         )
+        # Added by LBC
+        #print(text)
+        #print('\n')
+        #print(text_cleaner)
+        #print('\n')
+        #print(CONFIG.phoneme_language)
+        #print('\n')
+        #print(CONFIG.enable_eos_bos_chars)
+        #print('\n')
+        #print(custom_symbols)
+        #print('\n')
+        #print(CONFIG.characters)
+        #print('\n')
+        #print(CONFIG.use_espeak_phonemes)
+        #print('\n')
+        #print(CONFIG.add_blank)
+        #print('\n')
+        #print(seq)
+        ###
     else:
         seq = np.asarray(
             text_to_sequence(
