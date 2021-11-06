@@ -6,7 +6,11 @@ from TTS.tts.utils.text.chinese_mandarin.numbers import replace_numbers_to_chara
 
 from .abbreviations import abbreviations_en, abbreviations_fr
 from .number_norm import normalize_numbers
+from .number_norm_es import normalize_numbers_es
+
 from .time import expand_time_english
+from .time_es import expand_time_spanish
+
 
 # Regular expression matching whitespace:
 _whitespace_re = re.compile(r"\s+")
@@ -22,8 +26,11 @@ def expand_abbreviations(text, lang="en"):
     return text
 
 
-def expand_numbers(text):
-    return normalize_numbers(text)
+def expand_numbers(text, lang="en"):
+    if lang == "en":
+        return normalize_numbers(text)
+    elif lang == "es":
+        return normalize_numbers_es(text)
 
 
 def lowercase(text):
@@ -130,6 +137,8 @@ def spanish_cleaners(text):
     """Basic pipeline for Spanish text. There is no need to expand abbreviation and
     numbers, phonemizer already does that"""
     text = lowercase(text)
+    text = expand_time_spanish(text)
+    text = expand_numbers(text, lang="es")
     text = replace_symbols(text, lang="es")
     text = remove_aux_symbols(text)
     text = collapse_whitespace(text)
