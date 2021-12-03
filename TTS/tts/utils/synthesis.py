@@ -121,7 +121,6 @@ def run_model_torch(
 
 def run_model_conversion_torch(
     model: nn.Module,
-    inputs: torch.Tensor,
     speaker_id: int = None,
     speaker_target_id: int = None,
     style_mel: torch.Tensor = None,
@@ -139,16 +138,13 @@ def run_model_conversion_torch(
     Returns:
         Dict: model outputs.
     """
-    input_lengths = torch.tensor(inputs.shape[1:2]).to(inputs.device)
     if hasattr(model, "module"):
         # _func = model.module.inference
         _func = model.module.conversion
     else:
         _func = model.conversion
     outputs = _func(
-        inputs,
         aux_input={
-            "x_lengths": input_lengths,
             "speaker_ids": speaker_id,
             "speaker_target_ids": speaker_target_id,
             "d_vectors": d_vector,
@@ -372,7 +368,6 @@ def synthesis(
 
 def conversion(
     model,
-    text,
     CONFIG,
     use_cuda,
     ap,
@@ -391,9 +386,6 @@ def conversion(
     Args:
         model (TTS.tts.models):
             The TTS model to synthesize audio with.
-
-        text (str):
-            The input text to convert to speech.
 
         CONFIG (Coqpit):
             Model configuration.
@@ -435,8 +427,7 @@ def conversion(
             style_mel = compute_style_mel(style_wav, ap, cuda=use_cuda)
     if hasattr(model, "make_symbols"):
         custom_symbols = model.make_symbols(CONFIG)
-    # preprocess the given text
-    text_inputs = text_to_seq(text, CONFIG, custom_symbols=custom_symbols)
+    
     # pass tensors to backend
     if backend == "torch":
         if speaker_id is not None:
@@ -449,8 +440,8 @@ def conversion(
 
         if not isinstance(style_mel, dict):
             style_mel = numpy_to_torch(style_mel, torch.float, cuda=use_cuda)
-        text_inputs = numpy_to_torch(text_inputs, torch.long, cuda=use_cuda)
-        text_inputs = text_inputs.unsqueeze(0)
+        # text_inputs = numpy_to_torch(text_inputs, torch.long, cuda=use_cuda)
+        # text_inputs = text_inputs.unsqueeze(0)
     elif backend in ["tf", "tflite"]:
         # TODO: handle speaker id for tf model
         style_mel = numpy_to_tf(style_mel, tf.float32)
@@ -459,9 +450,12 @@ def conversion(
     # synthesize voice
     if backend == "torch":
         # outputs = run_model_torch(model, text_inputs, speaker_id, style_mel, d_vector=d_vector)
-        outputs = run_model_conversion_torch(model, text_inputs, speaker_id, style_mel, d_vector=d_vector)
+        outputs = run_model_conversion_torch(model, speaker_id, speaker_target_id, style_mel, d_vector=d_vector)
         model_outputs = outputs["model_outputs"]
-        model_outputs = model_outputs[0].data.cpu().numpy()
+        print(model_outputs.shape)
+        # model_outputs = model_outputs[0].data.cpu().numpy()
+        model_outputs = model_outputs.flatten().data.cpu().numpy()
+        print(model_outputs.shape)
         alignments = outputs["alignments"]
     elif backend == "tf":
         decoder_output, postnet_output, alignments, stop_tokens = run_model_tf(
@@ -479,7 +473,9 @@ def conversion(
     # plot results
     wav = None
     if hasattr(model, "END2END") and model.END2END:
-        wav = model_outputs.squeeze(0)
+        print('Es END2END')
+        # wav = model_outputs.squeeze(0)
+        wav = model_outputs.squeeze()
     else:
         if use_griffin_lim:
             wav = inv_spectrogram(model_outputs, ap, CONFIG)
@@ -489,7 +485,7 @@ def conversion(
     return_dict = {
         "wav": wav,
         "alignments": alignments,
-        "text_inputs": text_inputs,
+        "text_inputs": '',
         "outputs": outputs,
     }
     return return_dict

@@ -504,54 +504,30 @@ class Vits(BaseTTS):
         outputs = {"model_outputs": o, "alignments": attn.squeeze(1), "z": z, "z_p": z_p, "m_p": m_p, "logs_p": logs_p}
         return outputs
     
-    def conversion(self, x, aux_input={"d_vectors": None, "speaker_ids": None, "speaker_target_ids": None}):
+    def conversion(self, aux_input={"d_vectors": None, "speaker_ids": None, "speaker_target_ids": None}):
         """
         Shapes:
-            - x: :math:`[B, T_seq]`
             - d_vectors: :math:`[B, C, 1]`
             - speaker_ids: :math:`[B]`
             - speaker_target_ids: :math:`[B]`
         """
+        print(aux_input)
+        
         sid, g, sid_t = self._set_cond_input(aux_input)
         
-        
-        x_lengths = torch.tensor(x.shape[1:2]).to(x.device)
-
-        x, m_p, logs_p, x_mask = self.text_encoder(x, x_lengths)
-
-        if self.num_speakers > 0 and sid is not None:
-            g = self.emb_g(sid).unsqueeze(-1)
-
-        if self.args.use_sdp:
-            logw = self.duration_predictor(x, x_mask, g=g, reverse=True, noise_scale=self.inference_noise_scale_dp)
-        else:
-            logw = self.duration_predictor(x, x_mask, g=g)
-
-        w = torch.exp(logw) * x_mask * self.length_scale
-        w_ceil = torch.ceil(w)
-        y_lengths = torch.clamp_min(torch.sum(w_ceil, [1, 2]), 1).long()
-        y_mask = sequence_mask(y_lengths, None).to(x_mask.dtype)
-        attn_mask = torch.unsqueeze(x_mask, 2) * torch.unsqueeze(y_mask, -1)
-        attn = generate_path(w_ceil.squeeze(1), attn_mask.squeeze(1).transpose(1, 2))
-
-        m_p = torch.matmul(attn.transpose(1, 2), m_p.transpose(1, 2)).transpose(1, 2)
-        logs_p = torch.matmul(attn.transpose(1, 2), logs_p.transpose(1, 2)).transpose(1, 2)
-
-        z_p = m_p + torch.randn_like(m_p) * torch.exp(logs_p) * self.inference_noise_scale
-        # z = self.flow(z_p, y_mask, g=g, reverse=True)
-        # o = self.waveform_decoder((z * y_mask)[:, :, : self.max_inference_len], g=g)
-        
-        
+        # print(sid, g, sid_t)
+       
         assert self.num_speakers > 0, "num_speakers have to be larger than 0."
         g_src = self.emb_g(sid).unsqueeze(-1)
         g_tgt = self.emb_g(sid_t).unsqueeze(-1)
-        z, _, _, y_mask = self.enc_q(g, 1, g=g_src)
+        # z, _, _, y_mask = self.enc_q(g, 1, g=g_src)
+        y_length = torch.LongTensor([1])
+        z, _, _, y_mask = self.posterior_encoder(g, y_length, g=g_src)
         z_p = self.flow(z, y_mask, g=g_src)
         z_hat = self.flow(z_p, y_mask, g=g_tgt, reverse=True)
         o = self.waveform_decoder((z_hat * y_mask)[:, :, : self.max_inference_len], g=g_tgt)
-        
-
-        outputs = {"model_outputs": o, "alignments": attn.squeeze(1), "z": z, "z_p": z_p, "m_p": m_p, "logs_p": logs_p}
+        print(o.shape)
+        outputs = {"model_outputs": o, "alignments": None, "z": z, "z_p": z_p, "m_p": None, "logs_p": None}
         return outputs
 
     def voice_conversion(self, y, y_lengths, sid_src, sid_tgt):

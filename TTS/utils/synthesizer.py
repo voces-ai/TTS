@@ -277,7 +277,7 @@ class Synthesizer(object):
         print(f" > Real-time factor: {process_time / audio_time}")
         return wavs
     
-    def conversion(self, text: str, speaker_idx: str = "", speaker_target_idx: str = "", speaker_wav=None, style_wav=None) -> List[int]:
+    def conversion(self, speaker_idx: str = "", speaker_target_idx: str = "", speaker_wav=None, style_wav=None) -> List[int]:
         """🐸 TTS magic. Run all the models and generate speech.
 
         Args:
@@ -292,9 +292,6 @@ class Synthesizer(object):
         """
         start_time = time.time()
         wavs = []
-        sens = self.split_into_sentences(text)
-        print(" > Text splitted to sentences.")
-        print(sens)
 
         # handle multi-speaker
         speaker_embedding = None
@@ -327,57 +324,69 @@ class Synthesizer(object):
 
         # compute a new d_vector from the given clip.
         if speaker_wav is not None:
-            speaker_embedding = self.tts_model.speaker_manager.compute_d_vector_from_clip(speaker_wav)
+            # speaker_embedding = self.tts_model.speaker_manager.compute_d_vector_from_clip(speaker_wav)
+            waveform = self.ap.load_wav(speaker_wav, sr=self.ap.sample_rate)
+            spec = self.ap.melspectrogram(waveform)
+            spec = torch.from_numpy(spec.T)
+            if self.use_cuda:
+                spec = spec.cuda()
+            spec = spec.unsqueeze(0)
+            spec = spec.permute(1,2,0)
+            print(spec.shape)
+            # spec = spec.T
+            # spec = spec[:,:,None]
 
         use_gl = self.vocoder_model is None
 
-        for sen in sens:
-            # synthesize voice conversion
-            outputs = conversion(
-                model=self.tts_model,
-                text=sen,
-                CONFIG=self.tts_config,
-                use_cuda=self.use_cuda,
-                ap=self.ap,
-                speaker_id=speaker_id,
-                speaker_tarte_id=speaker_target_id,
-                style_wav=style_wav,
-                enable_eos_bos_chars=self.tts_config.enable_eos_bos_chars,
-                use_griffin_lim=use_gl,
-                d_vector=speaker_embedding,
-            )
-            waveform = outputs["wav"]
-            mel_postnet_spec = outputs["outputs"]["model_outputs"][0].detach().cpu().numpy()
-            if not use_gl:
-                # denormalize tts output based on tts audio config
-                mel_postnet_spec = self.ap.denormalize(mel_postnet_spec.T).T
-                device_type = "cuda" if self.use_cuda else "cpu"
-                # renormalize spectrogram based on vocoder config
-                vocoder_input = self.vocoder_ap.normalize(mel_postnet_spec.T)
-                # compute scale factor for possible sample rate mismatch
-                scale_factor = [
-                    1,
-                    self.vocoder_config["audio"]["sample_rate"] / self.ap.sample_rate,
-                ]
-                if scale_factor[1] != 1:
-                    print(" > interpolating tts model output.")
-                    vocoder_input = interpolate_vocoder_input(scale_factor, vocoder_input)
-                else:
-                    vocoder_input = torch.tensor(vocoder_input).unsqueeze(0)  # pylint: disable=not-callable
-                # run vocoder model
-                # [1, T, C]
-                waveform = self.vocoder_model.inference(vocoder_input.to(device_type))
-            if self.use_cuda and not use_gl:
-                waveform = waveform.cpu()
-            if not use_gl:
-                waveform = waveform.numpy()
-            waveform = waveform.squeeze()
+        # synthesize voice conversion
+        outputs = conversion(
+            model=self.tts_model,
+            CONFIG=self.tts_config,
+            use_cuda=self.use_cuda,
+            ap=self.ap,
+            speaker_id=speaker_id,
+            speaker_target_id=speaker_target_id,
+            style_wav=style_wav,
+            enable_eos_bos_chars=self.tts_config.enable_eos_bos_chars,
+            use_griffin_lim=use_gl,
+            d_vector=spec,
+        )
+        waveform = outputs["wav"]
+        print(waveform.shape)
+        mel_postnet_spec = outputs["outputs"]["model_outputs"][0].detach().cpu().numpy()
+        if not use_gl:
+            print('use_gl = true')
+            # denormalize tts output based on tts audio config
+            mel_postnet_spec = self.ap.denormalize(mel_postnet_spec.T).T
+            device_type = "cuda" if self.use_cuda else "cpu"
+            # renormalize spectrogram based on vocoder config
+            vocoder_input = self.vocoder_ap.normalize(mel_postnet_spec.T)
+            # compute scale factor for possible sample rate mismatch
+            scale_factor = [
+                1,
+                self.vocoder_config["audio"]["sample_rate"] / self.ap.sample_rate,
+            ]
+            if scale_factor[1] != 1:
+                print(" > interpolating tts model output.")
+                vocoder_input = interpolate_vocoder_input(scale_factor, vocoder_input)
+            else:
+                vocoder_input = torch.tensor(vocoder_input).unsqueeze(0)  # pylint: disable=not-callable
+            # run vocoder model
+            # [1, T, C]
+            waveform = self.vocoder_model.inference(vocoder_input.to(device_type))
+        if self.use_cuda and not use_gl:
+            waveform = waveform.cpu()
+        if not use_gl:
+            waveform = waveform.numpy()
+        waveform = waveform.squeeze()
 
-            # trim silence
-            waveform = trim_silence(waveform, self.ap)
+        print(waveform.shape)
+        
+        # trim silence
+        waveform = trim_silence(waveform, self.ap)
 
-            wavs += list(waveform)
-            wavs += [0] * 10000
+        wavs += list(waveform)
+        wavs += [0] * 10000
 
         # compute stats
         process_time = time.time() - start_time
