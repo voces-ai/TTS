@@ -313,6 +313,7 @@ class Vits(BaseTTS):
 
         if args.init_discriminator:
             self.disc = VitsDiscriminator(use_spectral_norm=args.use_spectral_norm_disriminator)
+            
 
     def init_multispeaker(self, config: Coqpit):
         """Initialize multi-speaker modules of a model. A model can be trained either with a speaker embedding layer
@@ -555,13 +556,16 @@ class Vits(BaseTTS):
 
     def voice_conversion(self, y, y_lengths, sid_src, sid_tgt):
         """TODO: create an end-point for voice conversion"""
+
         assert self.num_speakers > 0, "num_speakers have to be larger than 0."
         g_src = self.emb_g(sid_src).unsqueeze(-1)
         g_tgt = self.emb_g(sid_tgt).unsqueeze(-1)
-        z, _, _, y_mask = self.enc_q(y, y_lengths, g=g_src)
+        #z, _, _, y_mask = self.enc_q(y, y_lengths, g=g_src)
+        z, _, _, y_mask = self.posterior_encoder(y, y_lengths, g=g_src)
         z_p = self.flow(z, y_mask, g=g_src)
         z_hat = self.flow(z_p, y_mask, g=g_tgt, reverse=True)
         o_hat = self.waveform_decoder(z_hat * y_mask, g=g_tgt)
+        #o_hat = self.waveform_decoder((z_hat * y_mask)[:, :, : self.max_inference_len], g=g_tgt)
         return o_hat, y_mask, (z, z_p, z_hat)
 
     def train_step(self, batch: dict, criterion: nn.Module, optimizer_idx: int) -> Tuple[Dict, Dict]:
