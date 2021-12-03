@@ -11,7 +11,7 @@ from TTS.tts.utils.speakers import SpeakerManager
 
 # pylint: disable=unused-wildcard-import
 # pylint: disable=wildcard-import
-from TTS.tts.utils.synthesis import synthesis, trim_silence
+from TTS.tts.utils.synthesis import synthesis, trim_silence, conversion
 from TTS.utils.audio import AudioProcessor
 from TTS.vocoder.models import setup_model as setup_vocoder_model
 from TTS.vocoder.utils.generic_utils import interpolate_vocoder_input
@@ -232,6 +232,115 @@ class Synthesizer(object):
                 use_cuda=self.use_cuda,
                 ap=self.ap,
                 speaker_id=speaker_id,
+                style_wav=style_wav,
+                enable_eos_bos_chars=self.tts_config.enable_eos_bos_chars,
+                use_griffin_lim=use_gl,
+                d_vector=speaker_embedding,
+            )
+            waveform = outputs["wav"]
+            mel_postnet_spec = outputs["outputs"]["model_outputs"][0].detach().cpu().numpy()
+            if not use_gl:
+                # denormalize tts output based on tts audio config
+                mel_postnet_spec = self.ap.denormalize(mel_postnet_spec.T).T
+                device_type = "cuda" if self.use_cuda else "cpu"
+                # renormalize spectrogram based on vocoder config
+                vocoder_input = self.vocoder_ap.normalize(mel_postnet_spec.T)
+                # compute scale factor for possible sample rate mismatch
+                scale_factor = [
+                    1,
+                    self.vocoder_config["audio"]["sample_rate"] / self.ap.sample_rate,
+                ]
+                if scale_factor[1] != 1:
+                    print(" > interpolating tts model output.")
+                    vocoder_input = interpolate_vocoder_input(scale_factor, vocoder_input)
+                else:
+                    vocoder_input = torch.tensor(vocoder_input).unsqueeze(0)  # pylint: disable=not-callable
+                # run vocoder model
+                # [1, T, C]
+                waveform = self.vocoder_model.inference(vocoder_input.to(device_type))
+            if self.use_cuda and not use_gl:
+                waveform = waveform.cpu()
+            if not use_gl:
+                waveform = waveform.numpy()
+            waveform = waveform.squeeze()
+
+            # trim silence
+            waveform = trim_silence(waveform, self.ap)
+
+            wavs += list(waveform)
+            wavs += [0] * 10000
+
+        # compute stats
+        process_time = time.time() - start_time
+        audio_time = len(wavs) / self.tts_config.audio["sample_rate"]
+        print(f" > Processing time: {process_time}")
+        print(f" > Real-time factor: {process_time / audio_time}")
+        return wavs
+    
+    def conversion(self, text: str, speaker_idx: str = "", speaker_target_idx: str = "", speaker_wav=None, style_wav=None) -> List[int]:
+        """🐸 TTS magic. Run all the models and generate speech.
+
+        Args:
+            text (str): input text.
+            speaker_idx (str, optional): spekaer id for multi-speaker models. Defaults to "".
+            speaker_target_idx (str, optional): spekaer id for multi-speaker models. Defaults to "".
+            speaker_wav ():
+            style_wav ([type], optional): style waveform for GST. Defaults to None.
+
+        Returns:
+            List[int]: [description]
+        """
+        start_time = time.time()
+        wavs = []
+        sens = self.split_into_sentences(text)
+        print(" > Text splitted to sentences.")
+        print(sens)
+
+        # handle multi-speaker
+        speaker_embedding = None
+        speaker_id = None
+        speaker_target_id = None
+        if self.tts_speakers_file or hasattr(self.tts_model.speaker_manager, "speaker_ids"):
+            if speaker_idx and isinstance(speaker_idx, str) and speaker_target_idx and isinstance(speaker_target_idx, str):
+                if self.tts_config.use_d_vector_file:
+                    # get the speaker embedding from the saved d_vectors.
+                    speaker_embedding = self.tts_model.speaker_manager.get_d_vectors_by_speaker(speaker_idx)[0]
+                    speaker_embedding = np.array(speaker_embedding)[None, :]  # [1 x embedding_dim]
+                else:
+                    # get speaker idx from the speaker name
+                    speaker_id = self.tts_model.speaker_manager.speaker_ids[speaker_idx]
+                    speaker_target_id = self.tts_model.speaker_manager.speaker_ids[speaker_target_idx]
+
+            elif not speaker_idx and not speaker_target_idx and not speaker_wav:
+                raise ValueError(
+                    " [!] Look like you use a multi-speaker model. "
+                    "You need to define either a `speaker_idx` or a `style_wav` to use a multi-speaker model."
+                )
+            else:
+                speaker_embedding = None
+        else:
+            if speaker_idx:
+                raise ValueError(
+                    f" [!] Missing speakers.json file path for selecting speaker {speaker_idx}."
+                    "Define path for speaker.json if it is a multi-speaker model or remove defined speaker idx. "
+                )
+
+        # compute a new d_vector from the given clip.
+        if speaker_wav is not None:
+            speaker_embedding = self.tts_model.speaker_manager.compute_d_vector_from_clip(speaker_wav)
+
+        use_gl = self.vocoder_model is None
+
+        for sen in sens:
+            # synthesize voice conversion
+            outputs = conversion(
+                model=self.tts_model,
+                text=sen,
+                CONFIG=self.tts_config,
+                use_cuda=self.use_cuda,
+                ap=self.ap,
+                speaker_id=speaker_id,
+                speaker_tarte_id=speaker_target_id,
                 style_wav=style_wav,
                 enable_eos_bos_chars=self.tts_config.enable_eos_bos_chars,
                 use_griffin_lim=use_gl,
