@@ -54,7 +54,9 @@ def text2phone(text, language, use_espeak_phonemes=False):
     if gruut.is_language_supported(language):
         # Use gruut for phonemization
         phonemizer_args = {
-            "remove_stress": True,
+            #"remove_stress": True,
+            # Added by LBC
+            "remove_stress": False,
             "ipa_minor_breaks": False,  # don't replace commas/semi-colons with IPA |
             "ipa_major_breaks": False,  # don't replace periods with IPA ‖
         }
@@ -78,6 +80,7 @@ def text2phone(text, language, use_espeak_phonemes=False):
 
         # Fix a few phonemes
         ph = ph.translate(GRUUT_TRANS_TABLE)
+
         return ph
 
     raise ValueError(f" [!] Language {language} is not supported for phonemization.")

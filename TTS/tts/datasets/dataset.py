@@ -164,6 +164,9 @@ class TTSDataset(Dataset):
             custom_symbols=custom_symbols,
             tp=characters,
             add_blank=add_blank,
+            # Added by LBC
+            use_espeak_phonemes=True,
+
         )
         phonemes = np.asarray(phonemes, dtype=np.int32)
         np.save(cache_path, phonemes)
