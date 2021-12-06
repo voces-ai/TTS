@@ -486,7 +486,7 @@ class Vits(BaseTTS):
             - d_vectors: :math:`[B, C, 1]`
             - speaker_ids: :math:`[B]`
         """
-        sid, g, sid_t = self._set_cond_input_conversion(aux_input)
+        sid, g = self._set_cond_input(aux_input)
         x_lengths = torch.tensor(x.shape[1:2]).to(x.device)
 
         x, m_p, logs_p, x_mask = self.text_encoder(x, x_lengths)
@@ -525,7 +525,7 @@ class Vits(BaseTTS):
         """
         print(aux_input)
         
-        sid, g, sid_t = self._set_cond_input(aux_input)
+        sid, g, sid_t = self._set_cond_input_conversion(aux_input)
         
         # print(sid, g, sid_t)
        
