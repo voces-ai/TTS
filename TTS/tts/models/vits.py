@@ -355,6 +355,18 @@ class Vits(BaseTTS):
     @staticmethod
     def _set_cond_input(aux_input: Dict):
         """Set the speaker conditioning input based on the multi-speaker mode."""
+        sid, g = None, None
+        if "speaker_ids" in aux_input and aux_input["speaker_ids"] is not None:
+            sid = aux_input["speaker_ids"]
+            if sid.ndim == 0:
+                sid = sid.unsqueeze_(0)
+        if "d_vectors" in aux_input and aux_input["d_vectors"] is not None:
+            g = aux_input["d_vectors"]
+        return sid, g
+    
+    @staticmethod
+    def _set_cond_input_conversion(aux_input: Dict):
+        """Set the speaker conditioning input based on the multi-speaker mode."""
         sid, g, sid_t = None, None, None
         if "speaker_ids" in aux_input and aux_input["speaker_ids"] is not None:
             sid = aux_input["speaker_ids"]
@@ -474,7 +486,7 @@ class Vits(BaseTTS):
             - d_vectors: :math:`[B, C, 1]`
             - speaker_ids: :math:`[B]`
         """
-        sid, g, sid_t = self._set_cond_input(aux_input)
+        sid, g, sid_t = self._set_cond_input_conversion(aux_input)
         x_lengths = torch.tensor(x.shape[1:2]).to(x.device)
 
         x, m_p, logs_p, x_mask = self.text_encoder(x, x_lengths)
