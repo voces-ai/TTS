@@ -326,7 +326,8 @@ class Synthesizer(object):
         if speaker_wav is not None:
             # speaker_embedding = self.tts_model.speaker_manager.compute_d_vector_from_clip(speaker_wav)
             waveform = self.ap.load_wav(speaker_wav, sr=self.ap.sample_rate)
-            spec = self.ap.melspectrogram(waveform)
+            #waveform = waveform / np.amax(waveform) 
+            spec = self.ap.spectrogram(waveform)
             spec = torch.from_numpy(spec.T)
             if self.use_cuda:
                 spec = spec.cuda()
