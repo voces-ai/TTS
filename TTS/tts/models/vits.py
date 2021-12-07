@@ -534,12 +534,12 @@ class Vits(BaseTTS):
         g_tgt = self.emb_g(sid_t).unsqueeze(-1)
         # z, _, _, y_mask = self.enc_q(g, 1, g=g_src)
         y_length = torch.LongTensor([1])
-        z, _, _, y_mask = self.posterior_encoder(g, y_length, g=g_src)
+        z, m_q, logs_q, y_mask = self.posterior_encoder(g, y_length, g=g_src)
         z_p = self.flow(z, y_mask, g=g_src)
         z_hat = self.flow(z_p, y_mask, g=g_tgt, reverse=True)
         o = self.waveform_decoder((z_hat * y_mask)[:, :, : self.max_inference_len], g=g_tgt)
         print(o.shape)
-        outputs = {"model_outputs": o, "alignments": None, "z": z, "z_p": z_p, "m_p": None, "logs_p": None}
+        outputs = {"model_outputs": o, "alignments": None, "z": z_hat, "z_p": z_p, "m_p": m_q, "logs_p": logs_q}
         return outputs
 
     def voice_conversion(self, y, y_lengths, sid_src, sid_tgt):

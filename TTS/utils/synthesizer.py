@@ -326,11 +326,19 @@ class Synthesizer(object):
         if speaker_wav is not None:
             # speaker_embedding = self.tts_model.speaker_manager.compute_d_vector_from_clip(speaker_wav)
             waveform = self.ap.load_wav(speaker_wav, sr=self.ap.sample_rate)
-            #waveform = waveform / np.amax(waveform) 
+            # waveform = torch.FloatTensor(waveform.astype(np.float32))
+            # waveform = waveform / 32768.0; # TODO: 'max_wav_value' property into VITS model constants
+            waveform = self.ap.sound_norm(waveform)
+            # waveform = waveform.unsqueeze(0)
             spec = self.ap.spectrogram(waveform)
+            self.ap.print_spectrogram_image(spec, '/home/lbote/repos/mycode/voice_conversion/spec.png')
+            # spec = self.ap.spectrogram_torch(waveform, self.ap.fft_size,
+            #     self.ap.sample_rate, self.ap.hop_length, self.ap.win_length,
+            #     center=False)
             spec = torch.from_numpy(spec.T)
             if self.use_cuda:
                 spec = spec.cuda()
+            # spec = torch.squeeze(spec, 0)
             spec = spec.unsqueeze(0)
             spec = spec.permute(1,2,0)
             print(spec.shape)

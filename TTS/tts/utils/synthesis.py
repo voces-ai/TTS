@@ -454,6 +454,7 @@ def conversion(
         model_outputs = outputs["model_outputs"]
         print(model_outputs.shape)
         # model_outputs = model_outputs[0].data.cpu().numpy()
+        model_outputs = model_outputs.squeeze(1)   
         model_outputs = model_outputs.flatten().data.cpu().numpy()
         print(model_outputs.shape)
         alignments = outputs["alignments"]
