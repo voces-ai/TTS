@@ -4,6 +4,8 @@ import io
 import json
 import os
 import sys
+import pydub
+import numpy as np
 from pathlib import Path
 from typing import Union
 
@@ -104,6 +106,7 @@ synthesizer = Synthesizer(
 )
 
 use_multi_speaker = hasattr(synthesizer.tts_model, "speaker_manager") and synthesizer.tts_model.num_speakers > 1
+# use_multi_speaker = True
 speaker_manager = getattr(synthesizer.tts_model, "speaker_manager", None)
 # TODO: set this from SpeakerManager
 use_gst = synthesizer.tts_config.get("use_gst", False)
@@ -157,6 +160,19 @@ def details():
     )
 
 
+# @app.route("/api/tts", methods=["GET"])
+# def tts():
+#     text = request.args.get("text")
+#     speaker_idx = request.args.get("speaker_id", "")
+#     style_wav = request.args.get("style_wav", "")
+
+#     style_wav = style_wav_uri_to_dict(style_wav)
+#     print(" > Model input: {}".format(text))
+#     wavs = synthesizer.tts(text, speaker_idx=speaker_idx, style_wav=style_wav)
+#     out = io.BytesIO()
+#     synthesizer.save_wav(wavs, out)
+#     return send_file(out, mimetype="audio/wav")
+
 @app.route("/api/tts", methods=["GET"])
 def tts():
     text = request.args.get("text")
@@ -168,7 +184,22 @@ def tts():
     wavs = synthesizer.tts(text, speaker_idx=speaker_idx, style_wav=style_wav)
     out = io.BytesIO()
     synthesizer.save_wav(wavs, out)
-    return send_file(out, mimetype="audio/wav")
+    write(out, 22050, np.array(wavs))
+    return send_file(out, mimetype="audio/mp3")
+
+def write(f, sr, x, normalized=False):
+    """numpy array to MP3"""
+    channels = 2 if (x.ndim == 2 and x.shape[1] == 2) else 1
+    print('channels ' + str(channels))
+    # if normalized:  # normalized array - each item should be a float in [-1, 1)
+    #     y = np.int16(x * 2 ** 15)
+    # else:
+    #     y = np.int16(x)
+    wav_norm = x * (32767 / max(0.01, np.max(np.abs(x))))
+    y = np.int16(wav_norm)
+    # song = pydub.AudioSegment(y.tobytes(), frame_rate=sr, sample_width=2, channels=channels)
+    song = pydub.AudioSegment(y.tobytes(), frame_rate=sr, sample_width=2, channels=channels)
+    song.export(f, format="mp3", bitrate="128k")
 
 
 def main():

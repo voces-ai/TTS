@@ -162,3 +162,7 @@ internal/*
 *_pitch.npy
 *_phoneme.npy
 wandb
+
+# CMR tests
+server-vits.sh
+frases-test.md
