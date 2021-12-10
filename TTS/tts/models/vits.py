@@ -313,6 +313,7 @@ class Vits(BaseTTS):
 
         if args.init_discriminator:
             self.disc = VitsDiscriminator(use_spectral_norm=args.use_spectral_norm_disriminator)
+            
 
     def init_multispeaker(self, config: Coqpit):
         """Initialize multi-speaker modules of a model. A model can be trained either with a speaker embedding layer
@@ -362,6 +363,22 @@ class Vits(BaseTTS):
         if "d_vectors" in aux_input and aux_input["d_vectors"] is not None:
             g = aux_input["d_vectors"]
         return sid, g
+    
+    @staticmethod
+    def _set_cond_input_conversion(aux_input: Dict):
+        """Set the speaker conditioning input based on the multi-speaker mode."""
+        sid, g, sid_t = None, None, None
+        if "speaker_ids" in aux_input and aux_input["speaker_ids"] is not None:
+            sid = aux_input["speaker_ids"]
+            if sid.ndim == 0:
+                sid = sid.unsqueeze_(0)
+        if "speaker_target_ids" in aux_input and aux_input["speaker_target_ids"] is not None:
+            sid_t = aux_input["speaker_target_ids"]
+            if sid_t.ndim == 0:
+                sid_t = sid_t.unsqueeze_(0)
+        if "d_vectors" in aux_input and aux_input["d_vectors"] is not None:
+            g = aux_input["d_vectors"]
+        return sid, g, sid_t
 
     def get_aux_input(self, aux_input: Dict):
         sid, g = self._set_cond_input(aux_input)
@@ -498,16 +515,45 @@ class Vits(BaseTTS):
 
         outputs = {"model_outputs": o, "alignments": attn.squeeze(1), "z": z, "z_p": z_p, "m_p": m_p, "logs_p": logs_p}
         return outputs
+    
+    def conversion(self, aux_input={"d_vectors": None, "speaker_ids": None, "speaker_target_ids": None}):
+        """
+        Shapes:
+            - d_vectors: :math:`[B, C, 1]`
+            - speaker_ids: :math:`[B]`
+            - speaker_target_ids: :math:`[B]`
+        """
+        print(aux_input)
+        
+        sid, g, sid_t = self._set_cond_input_conversion(aux_input)
+        
+        # print(sid, g, sid_t)
+       
+        assert self.num_speakers > 0, "num_speakers have to be larger than 0."
+        g_src = self.emb_g(sid).unsqueeze(-1)
+        g_tgt = self.emb_g(sid_t).unsqueeze(-1)
+        # z, _, _, y_mask = self.enc_q(g, 1, g=g_src)
+        y_length = torch.LongTensor([1])
+        z, m_q, logs_q, y_mask = self.posterior_encoder(g, y_length, g=g_src)
+        z_p = self.flow(z, y_mask, g=g_src)
+        z_hat = self.flow(z_p, y_mask, g=g_tgt, reverse=True)
+        o = self.waveform_decoder((z_hat * y_mask)[:, :, : self.max_inference_len], g=g_tgt)
+        print(o.shape)
+        outputs = {"model_outputs": o, "alignments": None, "z": z_hat, "z_p": z_p, "m_p": m_q, "logs_p": logs_q}
+        return outputs
 
     def voice_conversion(self, y, y_lengths, sid_src, sid_tgt):
         """TODO: create an end-point for voice conversion"""
+
         assert self.num_speakers > 0, "num_speakers have to be larger than 0."
         g_src = self.emb_g(sid_src).unsqueeze(-1)
         g_tgt = self.emb_g(sid_tgt).unsqueeze(-1)
-        z, _, _, y_mask = self.enc_q(y, y_lengths, g=g_src)
+        #z, _, _, y_mask = self.enc_q(y, y_lengths, g=g_src)
+        z, _, _, y_mask = self.posterior_encoder(y, y_lengths, g=g_src)
         z_p = self.flow(z, y_mask, g=g_src)
         z_hat = self.flow(z_p, y_mask, g=g_tgt, reverse=True)
         o_hat = self.waveform_decoder(z_hat * y_mask, g=g_tgt)
+        #o_hat = self.waveform_decoder((z_hat * y_mask)[:, :, : self.max_inference_len], g=g_tgt)
         return o_hat, y_mask, (z, z_p, z_hat)
 
     def train_step(self, batch: dict, criterion: nn.Module, optimizer_idx: int) -> Tuple[Dict, Dict]:
