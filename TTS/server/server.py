@@ -201,10 +201,12 @@ def write(f, sr, x, normalized=False):
     song = pydub.AudioSegment(y.tobytes(), frame_rate=sr, sample_width=2, channels=channels)
     song.export(f, format="mp3", bitrate="128k")
 
-
 def main():
-    app.run(debug=args.debug, host="::", port=args.port)
+    serve(app, host="::", port=args.port)
+    # app.run(debug=args.debug, host="::", port=args.port)
 
 
 if __name__ == "__main__":
-    main()
+    from waitress import serve
+    serve(app, host="::", port=args.port)
+    # main()
