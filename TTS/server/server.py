@@ -10,6 +10,9 @@ from pathlib import Path
 from typing import Union
 
 from flask import Flask, render_template, request, send_file
+from flask.helpers import send_from_directory
+from flask import jsonify
+from flask import send_from_directory
 
 from TTS.config import load_config
 from TTS.utils.manage import ModelManager
@@ -132,32 +135,41 @@ def style_wav_uri_to_dict(style_wav: str) -> Union[str, dict]:
     return None
 
 
-@app.route("/")
-def index():
-    return render_template(
-        "index.html",
-        show_details=args.show_details,
-        use_multi_speaker=use_multi_speaker,
-        speaker_ids=speaker_manager.speaker_ids if speaker_manager is not None else None,
-        use_gst=use_gst,
-    )
+# @app.route("/")
+# def index():
+#     return render_template(
+#         "index.html",
+#         show_details=args.show_details,
+#         use_multi_speaker=use_multi_speaker,
+#         speaker_ids=speaker_manager.speaker_ids if speaker_manager is not None else None,
+#         use_gst=use_gst,
+#     )
+
+@app.route('/', defaults=dict(filename=None))
+@app.route('/<path:filename>', methods=['GET', 'POST'])
+def index(filename):
+    filename = filename or 'index.html'
+    if request.method == 'GET':
+        return send_from_directory('./static', filename)
+
+    return jsonify(request.data)
 
 
-@app.route("/details")
-def details():
-    model_config = load_config(args.tts_config)
-    if args.vocoder_config is not None and os.path.isfile(args.vocoder_config):
-        vocoder_config = load_config(args.vocoder_config)
-    else:
-        vocoder_config = None
+# @app.route("/details")
+# def details():
+#     model_config = load_config(args.tts_config)
+#     if args.vocoder_config is not None and os.path.isfile(args.vocoder_config):
+#         vocoder_config = load_config(args.vocoder_config)
+#     else:
+#         vocoder_config = None
 
-    return render_template(
-        "details.html",
-        show_details=args.show_details,
-        model_config=model_config,
-        vocoder_config=vocoder_config,
-        args=args.__dict__,
-    )
+#     return render_template(
+#         "details.html",
+#         show_details=args.show_details,
+#         model_config=model_config,
+#         vocoder_config=vocoder_config,
+#         args=args.__dict__,
+#     )
 
 
 # @app.route("/api/tts", methods=["GET"])
@@ -184,7 +196,9 @@ def tts():
     wavs = synthesizer.tts(text, speaker_idx=speaker_idx, style_wav=style_wav)
     out = io.BytesIO()
     synthesizer.save_wav(wavs, out)
-    write(out, 22050, np.array(wavs))
+    sample_rate = synthesizer.tts_config.audio.get("sample_rate", False)
+    # print(sample_rate)
+    write(out, sample_rate, np.array(wavs))
     return send_file(out, mimetype="audio/mp3")
 
 def write(f, sr, x, normalized=False):
@@ -199,14 +213,14 @@ def write(f, sr, x, normalized=False):
     y = np.int16(wav_norm)
     # song = pydub.AudioSegment(y.tobytes(), frame_rate=sr, sample_width=2, channels=channels)
     song = pydub.AudioSegment(y.tobytes(), frame_rate=sr, sample_width=2, channels=channels)
-    song.export(f, format="mp3", bitrate="128k")
+    song.export(f, format="mp3", bitrate="190k")
 
 def main():
-    serve(app, host="::", port=args.port)
-    # app.run(debug=args.debug, host="::", port=args.port)
+    # serve(app, host="::", port=args.port)
+    app.run(debug=args.debug, host="::", port=args.port)
 
 
 if __name__ == "__main__":
     from waitress import serve
-    serve(app, host="::", port=args.port)
+    serve(app, host="0.0.0.0", port=args.port)
     # main()
