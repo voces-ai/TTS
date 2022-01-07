@@ -481,6 +481,9 @@ class Vits(BaseTTS):
             }
         )
         return outputs
+    
+    def set_length(self, x):
+        self.length_scale = x
 
     def inference(self, x, aux_input={"d_vectors": None, "speaker_ids": None}):
         """

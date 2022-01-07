@@ -191,6 +191,16 @@
                       <span id="message"></span>
                       <button id="speak-button" type="button" class="btn btn-primary my-4">Sintetizar</button>
                     </div>
+                    <div class="">
+                      {%if use_multi_speaker%}
+                      Elige una voz:
+                      <select id="speaker_id" name=speaker_id method="GET" action="/">
+                          {% for speaker_id in speaker_ids %}
+                          <option value="{{speaker_id}}" SELECTED>{{speaker_id}}</option>"
+                          {% endfor %}
+                      </select><br /><br />
+                      {%endif%}
+                    </div>
                   </div>
                 </div>
               </form>

@@ -113,7 +113,9 @@ use_multi_speaker = hasattr(synthesizer.tts_model, "speaker_manager") and synthe
 speaker_manager = getattr(synthesizer.tts_model, "speaker_manager", None)
 # TODO: set this from SpeakerManager
 use_gst = synthesizer.tts_config.get("use_gst", False)
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='', 
+            static_folder='static')
 
 
 def style_wav_uri_to_dict(style_wav: str) -> Union[str, dict]:
@@ -150,9 +152,16 @@ def style_wav_uri_to_dict(style_wav: str) -> Union[str, dict]:
 def index(filename):
     filename = filename or 'index.html'
     if request.method == 'GET':
-        return send_from_directory('./static', filename)
-
+        # return send_from_directory('./static', filename)
+        return render_template(
+            "index.html",
+            show_details=args.show_details,
+            use_multi_speaker=use_multi_speaker,
+            speaker_ids=speaker_manager.speaker_ids if speaker_manager is not None else None,
+            use_gst=use_gst,
+        )
     return jsonify(request.data)
+
 
 
 # @app.route("/details")
