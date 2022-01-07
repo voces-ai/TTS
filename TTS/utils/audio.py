@@ -625,6 +625,12 @@ class AudioProcessor(object):
         Returns:
             np.ndarray: Complex number array.
         """
+        #print('Spectrogram: ', 
+        #    self.fft_size,
+        #    self.hop_length,
+        #    self.win_length,
+        #    self.stft_pad_mode
+        #)
         return librosa.stft(
             y=y,
             n_fft=self.fft_size,

@@ -22,6 +22,9 @@ from TTS.utils.trainer_utils import get_optimizer, get_scheduler
 from TTS.vocoder.models.hifigan_generator import HifiganGenerator
 from TTS.vocoder.utils.generic_utils import plot_results
 
+import numpy as np
+from scipy.io.wavfile import write
+
 
 @dataclass
 class VitsArgs(Coqpit):
@@ -523,7 +526,7 @@ class Vits(BaseTTS):
             - speaker_ids: :math:`[B]`
             - speaker_target_ids: :math:`[B]`
         """
-        print(aux_input)
+        # print(aux_input)
         
         sid, g, sid_t = self._set_cond_input_conversion(aux_input)
         
@@ -532,13 +535,35 @@ class Vits(BaseTTS):
         assert self.num_speakers > 0, "num_speakers have to be larger than 0."
         g_src = self.emb_g(sid).unsqueeze(-1)
         g_tgt = self.emb_g(sid_t).unsqueeze(-1)
-        # z, _, _, y_mask = self.enc_q(g, 1, g=g_src)
+
+        # g_src = torch.load('/home/lbote/repos/vits/g_src.pt')
+        # g_tgt = torch.load('/home/lbote/repos/vits/g_tgt.pt')
+        # g = torch.load('/home/lbote/repos/vits/g.pt')
+        
         y_length = torch.LongTensor([1])
         z, m_q, logs_q, y_mask = self.posterior_encoder(g, y_length, g=g_src)
+        # z = torch.load('/home/lbote/repos/vits/z.pt')
+        # y_mask = torch.load('/home/lbote/repos/vits/y_mask.pt')
+
+        print("z: ", str(z.shape))
+        print("z_max: ", str(torch.max(z)))
+        
         z_p = self.flow(z, y_mask, g=g_src)
+        # z_p = torch.load('/home/lbote/repos/vits/z_p.pt')
+        print("z_p: ", str(z_p.shape))
+        print("z_p_max: ", str(torch.max(z_p)))
+        
         z_hat = self.flow(z_p, y_mask, g=g_tgt, reverse=True)
+        # z_hat = torch.load('/home/lbote/repos/vits/z_hat.pt')
+        print("z_hat: ", str(z_hat.shape))
+        print("z_hat_max: ", str(torch.max(z_hat)))
+
         o = self.waveform_decoder((z_hat * y_mask)[:, :, : self.max_inference_len], g=g_tgt)
-        print(o.shape)
+
+        print('>>> Función de conversión de VITS: ', str(o.shape))
+        audio1 = o[0,0].data.float().numpy()
+        wav_norm = audio1 * (32767 / max(0.01, np.max(np.abs(audio1))))
+        write("/home/lbote/repos/mycode/voice_conversion/pre-output-5.wav", 22050, wav_norm.astype(np.int16))
         outputs = {"model_outputs": o, "alignments": None, "z": z_hat, "z_p": z_p, "m_p": m_q, "logs_p": logs_q}
         return outputs
 

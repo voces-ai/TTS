@@ -151,7 +151,6 @@ class ResidualCouplingBlock(nn.Module):
             x = torch.cat([x0, x1], 1)
             return x
 
-
 class ResidualCouplingBlocks(nn.Module):
     def __init__(
         self,
@@ -240,6 +239,14 @@ class PosteriorEncoder(nn.Module):
             num_layers (int): Number of the WaveNet layers.
             cond_channels (int, optional): Number of conditioning tensor channels. Defaults to 0.
         """
+        print('PosteriorEncoder:', 
+            in_channels,
+            out_channels,
+            hidden_channels,
+            kernel_size,
+            dilation_rate,
+            num_layers,
+            cond_channels)
         super().__init__()
         self.in_channels = in_channels
         self.out_channels = out_channels

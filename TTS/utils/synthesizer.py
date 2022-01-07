@@ -326,27 +326,38 @@ class Synthesizer(object):
         if speaker_wav is not None:
             # speaker_embedding = self.tts_model.speaker_manager.compute_d_vector_from_clip(speaker_wav)
             waveform = self.ap.load_wav(speaker_wav, sr=self.ap.sample_rate)
+            # waveform1 = waveform
             # waveform = torch.FloatTensor(waveform.astype(np.float32))
-            # waveform = waveform / 32768.0; # TODO: 'max_wav_value' property into VITS model constants
-            waveform = self.ap.sound_norm(waveform)
-            # waveform = waveform.unsqueeze(0)
+            waveform = waveform / 32768.0; # TODO: 'max_wav_value' property into VITS model constants
+            print(waveform.shape)
+            # waveform = self.ap.sound_norm(waveform)
+            waveform = np.load("/home/lbote/repos/vits/y_data.npy")
+            print(waveform.shape)
             spec = self.ap.spectrogram(waveform)
+            print("Spectrogram shape: " + str(spec.shape))
             self.ap.print_spectrogram_image(spec, '/home/lbote/repos/mycode/voice_conversion/spec.png')
-            # spec = self.ap.spectrogram_torch(waveform, self.ap.fft_size,
+            # waveform1 = torch.FloatTensor(waveform1.astype(np.float32))
+            # waveform1 = waveform1.unsqueeze(0)
+            # spec2 = self.ap.spectrogram_torch(waveform1, self.ap.fft_size,
             #     self.ap.sample_rate, self.ap.hop_length, self.ap.win_length,
             #     center=False)
-            spec = torch.from_numpy(spec.T)
+            # print("Spectrogram 2 shape: " + str(spec2.shape))
+            # spec2 = spec2.squeeze(0)
+            # self.ap.print_spectrogram_image(spec2, '/home/lbote/repos/mycode/voice_conversion/spec2.png')
+            # spec = torch.from_numpy(spec.T)
+            # print("Spectrogram shape: " + str(spec.shape))
             if self.use_cuda:
                 spec = spec.cuda()
             # spec = torch.squeeze(spec, 0)
-            spec = spec.unsqueeze(0)
-            spec = spec.permute(1,2,0)
-            print(spec.shape)
+            spec = torch.from_numpy(spec).unsqueeze(0)
+            print("Spectrogram shape: " + str(spec.shape))
+            # spec = spec.permute(1,2,0)
+            # print("Spectrogram shape: " + str(spec.shape))
             # spec = spec.T
             # spec = spec[:,:,None]
 
         use_gl = self.vocoder_model is None
-
+        print("use_griffin_lim", use_gl)
         # synthesize voice conversion
         outputs = conversion(
             model=self.tts_model,
@@ -361,10 +372,10 @@ class Synthesizer(object):
             d_vector=spec,
         )
         waveform = outputs["wav"]
-        print(waveform.shape)
+        print('>> Después de conversion, waveform shape:', str(waveform.shape))
         mel_postnet_spec = outputs["outputs"]["model_outputs"][0].detach().cpu().numpy()
         if not use_gl:
-            print('use_gl = true')
+            print('use_gl = false')
             # denormalize tts output based on tts audio config
             mel_postnet_spec = self.ap.denormalize(mel_postnet_spec.T).T
             device_type = "cuda" if self.use_cuda else "cpu"

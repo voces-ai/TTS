@@ -206,7 +206,8 @@ def trim_silence(wav, ap):
 
 
 def inv_spectrogram(postnet_output, ap, CONFIG):
-    if CONFIG.model.lower() in ["tacotron"]:
+    print('inv_spectrogram', CONFIG.model.lower())
+    if CONFIG.model.lower() in ["tacotron", "vits"]:
         wav = ap.inv_spectrogram(postnet_output.T)
     else:
         wav = ap.inv_melspectrogram(postnet_output.T)
@@ -452,12 +453,12 @@ def conversion(
         # outputs = run_model_torch(model, text_inputs, speaker_id, style_mel, d_vector=d_vector)
         outputs = run_model_conversion_torch(model, speaker_id, speaker_target_id, style_mel, d_vector=d_vector)
         model_outputs = outputs["model_outputs"]
-        print(model_outputs.shape)
+        print('Model_outputs shape (1/2): ', str(model_outputs.shape))
         # model_outputs = model_outputs[0].data.cpu().numpy()
-        model_outputs = model_outputs.squeeze(1)   
-        model_outputs = model_outputs.flatten().data.cpu().numpy()
-        print(model_outputs.shape)
-        alignments = outputs["alignments"]
+        # model_outputs = model_outputs.squeeze(1)   
+        # print('Model_outputs shape (2/3): ', str(model_outputs.shape))
+        # model_outputs = model_outputs.flatten().data.cpu().numpy()
+        
     elif backend == "tf":
         decoder_output, postnet_output, alignments, stop_tokens = run_model_tf(
             model, text_inputs, CONFIG, speaker_id, style_mel
@@ -473,8 +474,14 @@ def conversion(
     # convert outputs to numpy
     # plot results
     wav = None
+    print("use_griffin_lim", use_griffin_lim)
     if hasattr(model, "END2END") and model.END2END:
         print('Es END2END')
+
+        model_outputs = model_outputs[0,0].data.float().numpy()
+        print('Model_outputs shape (2/2): ', str(model_outputs.shape))
+        alignments = outputs["alignments"]
+        
         # wav = model_outputs.squeeze(0)
         wav = model_outputs.squeeze()
     else:
