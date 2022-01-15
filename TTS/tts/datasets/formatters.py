@@ -124,7 +124,7 @@ def ljspeech(root_path, meta_file, **kwargs):  # pylint: disable=unused-argument
 
 
 # Added by LBC
-def monoceros_format(root_path, meta_file):
+def monoceros_format(root_path, meta_file, **kwargs):
     """Normalizes the Monoceros meta data file to TTS format"""
     txt_file = os.path.join(root_path, meta_file)
     items = []
@@ -139,7 +139,7 @@ def monoceros_format(root_path, meta_file):
 
 
 # Added by LBC
-def monoceros_format_multispeaker_joint(root_path, meta_file):
+def monoceros_format_multispeaker_joint(root_path, meta_file, **kwargs):
     """Normalizes the Monoceros meta data file to TTS format"""
     txt_file = os.path.join(root_path, meta_file)
     items = []

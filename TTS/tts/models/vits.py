@@ -770,13 +770,14 @@ class Vits(BaseTTS):
         if self.args.use_speaker_embedding and not self.args.use_d_vector_file:
             g_src = self.emb_g(speaker_cond_src).unsqueeze(-1)
             g_tgt = self.emb_g(speaker_cond_tgt).unsqueeze(-1)
+            z, _, _, y_mask = self.posterior_encoder(y, y_lengths, g=g_src)
         elif self.args.use_speaker_embedding and self.args.use_d_vector_file:
             g_src = F.normalize(speaker_cond_src).unsqueeze(-1)
             g_tgt = F.normalize(speaker_cond_tgt).unsqueeze(-1)
+            z, _, _, y_mask = self.posterior_encoder(y.transpose(1, 2), y_lengths, g=g_src)
         else:
             raise RuntimeError(" [!] Voice conversion is only supported on multi-speaker models.")
-
-        z, _, _, y_mask = self.posterior_encoder(y.transpose(1, 2), y_lengths, g=g_src)
+        
         z_p = self.flow(z, y_mask, g=g_src)
         z_hat = self.flow(z_p, y_mask, g=g_tgt, reverse=True)
         o_hat = self.waveform_decoder(z_hat * y_mask, g=g_tgt)
