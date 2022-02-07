@@ -146,6 +146,18 @@ def pad_with_eos_bos(phoneme_sequence, tp=None):
 
     return [_phonemes_to_id[_bos]] + list(phoneme_sequence) + [_phonemes_to_id[_eos]]
 
+def get_cleaner_by_language(language='en'):
+    # print('Cleaner para ', language)
+    cleaner_names = ['multilingual_cleaners']
+    if language == 'es':
+        cleaner_names = ['spanish_cleaners']
+    elif language == 'en':
+        cleaner_names = ['english_cleaners']
+    elif language == 'fr-FR':
+        cleaner_names = ['french_cleaners']
+    elif language == 'pt':
+        cleaner_names = ['portuguese_cleaners']
+    return cleaner_names
 
 def phoneme_to_sequence(
     text: str,
@@ -182,7 +194,10 @@ def phoneme_to_sequence(
     _phonemes_to_id = {s: i for i, s in enumerate(_phonemes)}
 
     sequence = []
+    cleaner_names = get_cleaner_by_language(language)
     clean_text = _clean_text(text, cleaner_names)
+    # Find cleaner by language
+
     to_phonemes = text2phone(clean_text, language, use_espeak_phonemes=use_espeak_phonemes)
     #print(to_phonemes) # Added by LBC
     if to_phonemes is None:

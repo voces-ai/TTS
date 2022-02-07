@@ -238,6 +238,7 @@ class VitsArgs(Coqpit):
     freeze_PE: bool = False
     freeze_flow_decoder: bool = False
     freeze_waveform_decoder: bool = False
+    index_modifier: int = None
 
 
 class Vits(BaseTTS):
@@ -310,6 +311,8 @@ class Vits(BaseTTS):
         self.noise_scale_dp = args.noise_scale_dp
         self.max_inference_len = args.max_inference_len
         self.spec_segment_size = args.spec_segment_size
+
+        self.index_modifier = args.index_modifier
 
         self.text_encoder = TextEncoder(
             args.num_chars,
@@ -689,6 +692,8 @@ class Vits(BaseTTS):
             - d_vectors: :math:`[B, C, 1]`
             - speaker_ids: :math:`[B]`
         """
+        # print("Model length scale", self.length_scale)
+        # print("Model index modifier", self.index_modifier)
         sid, g, lid = self._set_cond_input(aux_input)
         x_lengths = torch.tensor(x.shape[1:2]).to(x.device)
 
@@ -721,7 +726,18 @@ class Vits(BaseTTS):
         logs_p = torch.matmul(attn.transpose(1, 2), logs_p.transpose(1, 2)).transpose(1, 2)
 
         z_p = m_p + torch.randn_like(m_p) * torch.exp(logs_p) * self.inference_noise_scale
+
         z = self.flow(z_p, y_mask, g=g, reverse=True)
+
+        # self.index_modifier => 0-191
+        # [0, 192, 2135]
+        # print('Index modifier:', self.index_modifier)
+        # if self.index_modifier >= 0:
+        #     # z[0,self.index_modifier,:] = z[0,self.index_modifier,:] * 20
+        #     z[0,self.index_modifier,:] = z[0,self.index_modifier,:] + 20
+            
+
+
         o = self.waveform_decoder((z * y_mask)[:, :, : self.max_inference_len], g=g)
 
         outputs = {"model_outputs": o, "alignments": attn.squeeze(1), "z": z, "z_p": z_p, "m_p": m_p, "logs_p": logs_p}

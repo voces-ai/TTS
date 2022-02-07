@@ -89,7 +89,7 @@ def rand_segments(x: torch.tensor, x_lengths: torch.tensor = None, segment_size=
     if x_lengths is None:
         x_lengths = T
     max_idxs = x_lengths - segment_size + 1
-    assert all(max_idxs > 0), " [!] At least one sample is shorter than the segment size."
+    assert all(max_idxs > 0), " [!] At least one sample is shorter than the segment size. " + str(segment_size) + ' ' + str(x_lengths) + ' ' + str(max_idxs)
     segment_indices = (torch.rand([B]).type_as(x) * max_idxs).long()
     ret = segment(x, segment_indices, segment_size)
     return ret, segment_indices

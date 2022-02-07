@@ -205,6 +205,7 @@ class BaseTTSConfig(BaseTrainingConfig):
     min_seq_len: int = 1
     max_seq_len: int = float("inf")
     compute_f0: bool = False
+    f0_cache_path: str = None
     compute_linear_spec: bool = False
     use_noise_augment: bool = False
     add_blank: bool = False
