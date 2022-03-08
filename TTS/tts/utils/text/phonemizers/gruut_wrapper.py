@@ -44,7 +44,8 @@ class Gruut(BasePhonemizer):
         punctuations=Punctuation.default_puncs(),
         keep_puncs=True,
         use_espeak_phonemes=False,
-        keep_stress=False,
+        # keep_stress=False, 
+        keep_stress=True, # True by default? > Spanish 
     ):
         super().__init__(language, punctuations=punctuations, keep_puncs=keep_puncs)
         self.use_espeak_phonemes = use_espeak_phonemes
