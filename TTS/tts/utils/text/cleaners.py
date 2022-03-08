@@ -9,7 +9,9 @@ from TTS.tts.utils.text.chinese_mandarin.numbers import replace_numbers_to_chara
 
 from .english.abbreviations import abbreviations_en
 from .english.number_norm import normalize_numbers as en_normalize_numbers
+from .spanish.number_norm import normalize_numbers_es as es_normalize_numbers
 from .english.time_norm import expand_time_english
+from .spanish.time_norm import expand_time_spanish
 from .french.abbreviations import abbreviations_fr
 
 # Regular expression matching whitespace:
@@ -53,6 +55,11 @@ def replace_symbols(text, lang="en"):
         text = text.replace("&", " et ")
     elif lang == "pt":
         text = text.replace("&", " e ")
+    # added by LBC
+    elif lang == "es": 
+        text = text.replace("&", " y ")
+        text = text.replace("%", " por ciento ")
+        text = text.replace("€", " euros ")
     return text
 
 
@@ -140,6 +147,18 @@ def multilingual_cleaners(text):
     """Pipeline for multilingual text"""
     text = lowercase(text)
     text = replace_symbols(text, lang=None)
+    text = remove_aux_symbols(text)
+    text = collapse_whitespace(text)
+    return text
+
+# Added by LBC
+def spanish_cleaners(text):
+    """Basic pipeline for Spanish text. There is no need to expand abbreviation and
+    numbers, phonemizer already does that"""
+    text = lowercase(text)
+    text = expand_time_spanish(text)
+    text = es_normalize_numbers(text)
+    text = replace_symbols(text, lang="es")
     text = remove_aux_symbols(text)
     text = collapse_whitespace(text)
     return text
