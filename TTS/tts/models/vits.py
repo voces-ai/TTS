@@ -517,6 +517,21 @@ class Vits(BaseTTS):
 
         z_p = m_p + torch.randn_like(m_p) * torch.exp(logs_p) * self.inference_noise_scale
         z = self.flow(z_p, y_mask, g=g, reverse=True)
+        
+        # self.index_modifier => 0-191
+        # [0, 192, 2135]
+        # self.index_modifier = 44
+        # modifier = 20
+        # print('Index modifier:', self.index_modifier)
+        # if self.index_modifier >= 0:
+        #     # z[0,self.index_modifier,:] = z[0,self.index_modifier,:] * 20
+        #     z[0,self.index_modifier,:] = z[0,self.index_modifier,:] + modifier
+        #     z[0,self.index_modifier+1,:] = z[0,self.index_modifier+1,:] + modifier
+        #     z[0,self.index_modifier+2,:] = z[0,self.index_modifier+2,:] + modifier
+        #     z[0,self.index_modifier+3,:] = z[0,self.index_modifier+3,:] + modifier
+            
+        
+        
         o = self.waveform_decoder((z * y_mask)[:, :, : self.max_inference_len], g=g)
 
         outputs = {"model_outputs": o, "alignments": attn.squeeze(1), "z": z, "z_p": z_p, "m_p": m_p, "logs_p": logs_p}
