@@ -25,6 +25,15 @@ abbreviations_en = [
     ]
 ]
 
+# List of (regular expression, replacement) pairs for abbreviations in Spanish:
+abbreviations_es = [
+    (re.compile("\\b%s\\ " % x[0], re.IGNORECASE), x[1])
+    for x in [
+        ("PP", "partido popular"),
+        ("PSOE", "pesoe"),
+    ]
+]
+
 # List of (regular expression, replacement) pairs for abbreviations in french:
 abbreviations_fr = [
     (re.compile("\\b%s\\." % x[0], re.IGNORECASE), x[1])

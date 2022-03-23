@@ -4,7 +4,7 @@ from anyascii import anyascii
 
 from TTS.tts.utils.text.chinese_mandarin.numbers import replace_numbers_to_characters_in_text
 
-from .abbreviations import abbreviations_en, abbreviations_fr
+from .abbreviations import abbreviations_en, abbreviations_fr, abbreviations_es
 from .number_norm import normalize_numbers
 from .number_norm_es import normalize_numbers_es
 
@@ -21,6 +21,8 @@ def expand_abbreviations(text, lang="en"):
         _abbreviations = abbreviations_en
     elif lang == "fr":
         _abbreviations = abbreviations_fr
+    elif lang == "es":
+        _abbreviations = abbreviations_es
     for regex, replacement in _abbreviations:
         text = re.sub(regex, replacement, text)
     return text
@@ -136,6 +138,7 @@ def portuguese_cleaners(text):
 def spanish_cleaners(text):
     """Basic pipeline for Spanish text. There is no need to expand abbreviation and
     numbers, phonemizer already does that"""
+    text = expand_abbreviations(text, lang="es")
     text = lowercase(text)
     text = expand_time_spanish(text)
     text = expand_numbers(text, lang="es")

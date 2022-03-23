@@ -207,8 +207,10 @@ def tts():
     synthesizer.save_wav(wavs, out)
     sample_rate = synthesizer.tts_config.audio.get("sample_rate", False)
     # print(sample_rate)
-    write(out, sample_rate, np.array(wavs))
-    return send_file(out, mimetype="audio/mp3")
+    # write(out, sample_rate, np.array(wavs))
+    synthesizer.save_wav(wavs, out)
+    return send_file(out, mimetype="audio/wav")
+    # return send_file(out, mimetype="audio/mp3")
 
 def write(f, sr, x, normalized=False):
     """numpy array to MP3"""

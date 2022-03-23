@@ -91,8 +91,12 @@ def _expand_ordinal(m):
 
 
 def _expand_number(m):
+    prezero = ''
+    if ((len(m.group(0)) > 1) & (m.group(0)[0] == '0')):
+        prezero = 'cero '
+        m.group(0)[0] == ''
     num = int(m.group(0))
-    return num2words(num, lang='es')
+    return prezero + num2words(num, lang='es')
     # if 1000 < num < 3000:
     #     if num == 2000:
     #         return "dos mil"

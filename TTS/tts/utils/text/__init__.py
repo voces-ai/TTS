@@ -76,7 +76,9 @@ def text2phone(text, language, use_espeak_phonemes=False):
 
         # Join and re-split to break apart dipthongs, suprasegmentals, etc.
         ph_words = ["|".join(word_phonemes) for word_phonemes in ph_list]
+        print(ph_words)
         ph = "| ".join(ph_words)
+        print(ph)
 
         # Fix a few phonemes
         ph = ph.translate(GRUUT_TRANS_TABLE)
