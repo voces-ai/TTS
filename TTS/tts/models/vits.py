@@ -506,7 +506,15 @@ class Vits(BaseTTS):
             logw = self.duration_predictor(x, x_mask, g=g)
 
         w = torch.exp(logw) * x_mask * self.length_scale
+        print('w size ', w.shape)
         w_ceil = torch.ceil(w)
+        print('w_ceil size ', w_ceil.shape)
+        
+        # Duration modifier experiment
+        # duration_modifier = [1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5,1.5]
+        # for idx, val in enumerate(duration_mdifier):455
+        #     w_ceil[:,:,idx] = w_ceil[:,:,idx] * val
+        
         y_lengths = torch.clamp_min(torch.sum(w_ceil, [1, 2]), 1).long()
         y_mask = sequence_mask(y_lengths, None).to(x_mask.dtype)
         attn_mask = torch.unsqueeze(x_mask, 2) * torch.unsqueeze(y_mask, -1)

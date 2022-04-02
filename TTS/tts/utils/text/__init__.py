@@ -149,6 +149,7 @@ def phoneme_to_sequence(
     # iterate by skipping empty strings - NOTE: might be useful to keep it to have a better intonation.
     for phoneme in filter(None, to_phonemes.split("|")):
         sequence += _phoneme_to_sequence(phoneme)
+    print('Tamaño de secuencia ', len(sequence))
     # Append EOS char
     if enable_eos_bos:
         sequence = pad_with_eos_bos(sequence, tp=tp)

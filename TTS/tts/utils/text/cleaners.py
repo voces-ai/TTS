@@ -56,6 +56,14 @@ def replace_symbols(text, lang="en"):
     text = text.replace(";", ",")
     text = text.replace("-", " ")
     text = text.replace(":", ",")
+    
+    text = text.replace(", (", ", ")
+    text = text.replace("),", ",")
+    text = text.replace("(", ", ")
+    text = text.replace(").", ".")
+    text = text.replace(")", ", ")
+    
+        
     if lang == "en":
         text = text.replace("&", " and ")
     elif lang == "fr":
@@ -67,6 +75,8 @@ def replace_symbols(text, lang="en"):
         text = text.replace("&", " y ")
         text = text.replace("%", " por ciento ")
         text = text.replace("€", " euros ")
+        
+        
     return text
 
 

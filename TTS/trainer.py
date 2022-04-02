@@ -353,9 +353,11 @@ class Trainer:
         """
         # set arguments for continuing training
         if args.continue_path:
+            print('Continuamos desde', args.continue_path)
             experiment_path = args.continue_path
             args.config_path = os.path.join(args.continue_path, "config.json")
             args.restore_path, best_model = get_last_checkpoint(args.continue_path)
+            print('Con', args.restore_path, best_model)
             if not args.best_path:
                 args.best_path = best_model
 
