@@ -38,8 +38,10 @@ def make_symbols(
 _pad = "_"
 _eos = "~"
 _bos = "^"
-_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!'(),-.:;? "
-_punctuations = "!'(),-.:;? "
+#_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!'(),-.:;? "
+_characters = "abcdefghijklmnopqrstuvwxyzµßàáâäåæçèéêëìíîïñòóôöùúûüąćęłńœśşźżƒабвгдежзийклмнопрстуфхцчшщъыьэюяёєіїґӧ«°±µ»$%‘’‚“`”„"
+#_punctuations = "!'(),-.:;? "
+_punctuations = "!¡'(),-.:;¿? "
 
 # Phonemes definition (All IPA characters)
 _vowels = "iyɨʉɯuɪʏʊeøɘəɵɤoɛœɜɞʌɔæɐaɶɑɒᵻ"

@@ -198,7 +198,7 @@ def phoneme_to_sequence(
     clean_text = _clean_text(text, cleaner_names)
     # Find cleaner by language
 
-    to_phonemes = text2phone(clean_text, language, use_espeak_phonemes=use_espeak_phonemes)
+    to_phonemes = text2phone(clean_text, language, use_espeak_phonemes=use_espeak_phonemes, keep_stress=True)
     #print(to_phonemes) # Added by LBC
     if to_phonemes is None:
         print("!! After phoneme conversion the result is None. -- {} ".format(clean_text))
