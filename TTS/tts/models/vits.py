@@ -493,15 +493,28 @@ class Vits(BaseTTS):
             - speaker_ids: :math:`[B]`
         """
         sid, g = self._set_cond_input(aux_input)
+        
         x_lengths = torch.tensor(x.shape[1:2]).to(x.device)
 
         x, m_p, logs_p, x_mask = self.text_encoder(x, x_lengths)
 
         if self.num_speakers > 0 and sid is not None:
             g = self.emb_g(sid).unsqueeze(-1)
+            id1 = 0
+            g1 = self.emb_g(torch.tensor([id1])).unsqueeze(-1)
+            id2 = 5
+            g2 = self.emb_g(torch.tensor([id2])).unsqueeze(-1)
+            
+            print('g shape', sid, g.shape)
+            print('g1 shape', torch.tensor([id1]), g1.shape)
+            print('g2 shape', torch.tensor([id2]), g2.shape)
+            g3 = (( g2 + g1 + (g) )/3)
+            # g3 = (( g2 + (g) )/2)
+            
+            
 
         if self.args.use_sdp:
-            logw = self.duration_predictor(x, x_mask, g=g, reverse=True, noise_scale=self.inference_noise_scale_dp)
+            logw = self.duration_predictor(x, x_mask, g=g1, reverse=True, noise_scale=self.inference_noise_scale_dp)
         else:
             logw = self.duration_predictor(x, x_mask, g=g)
 
@@ -525,22 +538,30 @@ class Vits(BaseTTS):
 
         z_p = m_p + torch.randn_like(m_p) * torch.exp(logs_p) * self.inference_noise_scale
         z = self.flow(z_p, y_mask, g=g, reverse=True)
+        z1 = self.flow(z_p, y_mask, g=g1, reverse=True)
+        z2 = self.flow(z_p, y_mask, g=g2, reverse=True)
+        z3 = (z + z1 + z2)/3
+        # z3 = (z + z2)/2
+        
+        
+        print('z3', z3.shape)
         
         # self.index_modifier => 0-191
         # [0, 192, 2135]
         # self.index_modifier = 44
-        # modifier = 20
-        # print('Index modifier:', self.index_modifier)
-        # if self.index_modifier >= 0:
-        #     # z[0,self.index_modifier,:] = z[0,self.index_modifier,:] * 20
-        #     z[0,self.index_modifier,:] = z[0,self.index_modifier,:] + modifier
-        #     z[0,self.index_modifier+1,:] = z[0,self.index_modifier+1,:] + modifier
-        #     z[0,self.index_modifier+2,:] = z[0,self.index_modifier+2,:] + modifier
-        #     z[0,self.index_modifier+3,:] = z[0,self.index_modifier+3,:] + modifier
+        modifier = 0
+        if hasattr(self, 'modifier'):
+            modifier = self.modifier
+        print('z shape', z.shape)
+        if hasattr(self, 'index_modifier'):
+            print(self.index_modifier)
+            print('Index modifier:', self.index_modifier, 'con', modifier)
+            for im in self.index_modifier:
+                z[0,im,:] = z[0,im,:] + modifier
             
         
         
-        o = self.waveform_decoder((z * y_mask)[:, :, : self.max_inference_len], g=g)
+        o = self.waveform_decoder((z3 * y_mask)[:, :, : self.max_inference_len], g=g3)
 
         outputs = {"model_outputs": o, "alignments": attn.squeeze(1), "z": z, "z_p": z_p, "m_p": m_p, "logs_p": logs_p}
         return outputs
